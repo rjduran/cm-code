@@ -9,7 +9,6 @@ int x;
 int y;
 int s; // step size
 int r;
-int px;
 boolean moveRight;
 
 void setup() {
@@ -26,21 +25,21 @@ void draw() {
   noStroke();
 
   if (moveRight) {
-    if (px < width) {
-      px = px + s; // increase px by s until px is 1 more than the width
+    if (x < width) {
+      x = x + s; // increase x by s until x is 1 more than the width
     } else {
-      px = 0; // then reset x position to 0
+      x = 0; // then reset x position to 0
     }
   } else {
-    if (px > 0) {
-      px = px - s; // decrease px by s until px is 1 less than 0
+    if (x > 0) {
+      x = x - s; // decrease x by s until x is 1 less than 0
     } else {
-      px = width; // then reset x position to width
+      x = width; // then reset x position to width
     }
   }
 
   fill(0);
-  ellipse(px, y, r, r);
+  ellipse(x, y, r, r);
 }
 
 void keyPressed() {  

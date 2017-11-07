@@ -8,7 +8,6 @@ int x;
 int y;
 int s; // step size
 int r;
-int px;
 
 void setup() {
   size(300, 300);
@@ -22,12 +21,12 @@ void draw() {
   background(255);
   noStroke();
   //ellipse(x+second(), y-second(), 200, 200);
-  if (px < width) {
-    px = px + s; // increase px by s until px is 1 more than the width
+  if (x < width) {
+    x = x + s; // increase x by s until x is 1 more than the width
   } else {
-    px = 0; // then reset x position
+    x = 0; // then reset x position
   }
 
   fill(0);
-  ellipse(px, y, r, r);
+  ellipse(x, y, r, r);
 }
