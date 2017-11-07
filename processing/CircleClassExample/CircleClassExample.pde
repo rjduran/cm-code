@@ -1,8 +1,8 @@
 // CircleClassExample
-// Week 10: Creative Coding
+// Week 10: Creative Coding / Week 11
 // 6 Nov 2017
 // by RJ Duran
-// This example demonstrates how to create and use a class called Circle
+// This example demonstrates how to create and use a custom class called Circle
 
 // Create a variable of type Circle
 Circle c;

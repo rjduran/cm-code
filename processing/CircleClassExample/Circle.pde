@@ -1,3 +1,6 @@
+// This is an example of a class with different constructors 
+// Look at https://processing.org:8443/tutorials/objects/ to learn more about Objects
+
 class Circle {
   float x;
   float y;
