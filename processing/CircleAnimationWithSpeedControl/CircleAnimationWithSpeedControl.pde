@@ -24,19 +24,18 @@ void setup() {
 void draw() {
   background(255);
   noStroke();
-  //ellipse(x+second(), y-second(), 200, 200);
 
   if (moveRight) {
     if (px < width) {
       px = px + s; // increase px by s until px is 1 more than the width
     } else {
-      px = 0; // then reset x position
+      px = 0; // then reset x position to 0
     }
   } else {
     if (px > 0) {
-      px = px - s; // increase px by s until px is 1 more than the width
+      px = px - s; // decrease px by s until px is 1 less than 0
     } else {
-      px = width; // then reset x position
+      px = width; // then reset x position to width
     }
   }
 
