@@ -23,7 +23,7 @@
   */
   ```
 
-3. When committing projects to github you want to add the whole top level folder containing all processing pde files. This makes it much easier to clone the project and open files to run. Look at how I setup the sketches in the [cm-code/processing](https://github.com/rjduran/cm-code/tree/master/processing) folder. Processing will always place your pde file into a folder with the same name as the sketch file. Its also good practice to name your files following the "[Upper Camel Case](http://wiki.c2.com/?UpperCamelCase)" convention or an "underscores" convention. The same goes for class files such as "Circle" or "MyClass". Read through [Naming Conventions](https://en.wikipedia.org/wiki/Naming_convention_(programming)) to learn about other approaches.
+3. When committing projects to github you want to add the whole top level folder containing all processing pde files. This makes it much easier to clone the project and open files to run. Look at how I setup the sketches in the [cm-code/processing](https://github.com/rjduran/cm-code/tree/master/processing) folder. Processing will always place your pde file into a folder with the same name as the sketch file. Its also good practice to name your files following the "Upper Camel Case" convention in which several words are joined together, and the first letter of every word is capitalized or an "underscores" convention in which several words are joined together with underscores between them (ie. my_project). The same goes for class files such as "Circle" or "MyClass". Read through [Naming Conventions](https://en.wikipedia.org/wiki/Naming_convention_(programming)) to learn about other approaches.
 
   For example:
   ```
