@@ -1,2 +1,7 @@
 **/.DS_Store
 node_modules
+arduino
+fusion
+iot-2016
+johnny-five-*
+websocket-apps
