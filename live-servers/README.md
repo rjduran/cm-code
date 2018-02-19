@@ -28,7 +28,7 @@ npm install -g live-server
 cd cm-code/live-servers/npm-live-server-test
 ````
 
-3. Enter the following in the terminal to launch the live server for the current directory. It will open up your browser to the address 127.0.0.1:8080.
+3. Enter the following in the terminal to launch the live server for the current directory. It will open up your browser to the address 127.0.0.1:8080. Try `live-server --help` to see options for the command. You can specify a different port by using the `--port=PORT` option. For example, if you want your app to run on port 3030 you would enter, `live-server --port=3030`.
 ````
 live-server
 ````
