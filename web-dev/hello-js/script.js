@@ -1,0 +1,1 @@
+console.log("hello from inside the script.js file");
