@@ -171,13 +171,18 @@ live-server
     ````
 6. Start a live-server instance for your current project and test it out. Using the Chrome Dev Tools, monitor the console to see what happens when you click on the "Click Me!" button in your page. You should see "yay! div clicked" print out to the console.
 
+### Whats next??
+
+Just a note on exercise-04. It is functionally the same as exercise-03 but it is using bundle.js as the only javascript loaded. As things are always evolving with web development tools and workflows, [webpack](https://webpack.js.org/) is another tool that does similar things and is becoming more popular as a task runner and module bundler for more than js files. You can learn more here is you are curious: [Webpack or Browserify & Gulp: Which Is Better?](https://www.toptal.com/front-end/webpack-browserify-gulp-which-is-better).
+
+To learn how to automate your workflow (ie automate the generation of bundle.js in real-time) you can use budo. Look at [hello-budo](https://github.com/rjduran/cm-code/tree/master/node/hello-budo) to and work through those exercises.
+ 
 ## References
 
 * [node.js](nodejs.org)
 * [npm](https://www.npmjs.com/)
 * [live-server](https://www.npmjs.com/package/live-server/)
 * [bootstrap](https://getbootstrap.com/)
-
 
 
 
