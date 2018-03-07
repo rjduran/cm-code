@@ -15,6 +15,8 @@ Benefits:
 * Simple and easy to use server for rapid prototyping
 * Ability to use in combination with ngrok to tunnel (via secondary terminal window)
 
+Use:
+
 1. Install the [atom-live-server](https://atom.io/packages/atom-live-server) package using apm or in Atom: Atom Preferences > Settings > Install > Search for "atom-live-server" and Install.
 ````
 apm install atom-live-server
@@ -31,6 +33,8 @@ Benefits:
 * Automatic reloading
 * Simple and easy to use server for rapid prototyping
 * Ability to use in combination with ngrok to tunnel (via secondary terminal window)
+
+Use:
 
 1. Install the [live-server](https://www.npmjs.com/package/live-server) npm module globally. With this you will be able to run `live-server` from the command line shown in the next step.
 ````
@@ -57,6 +61,8 @@ Benefits:
 * Ability to open the same localhost on any device on a local network
 * Admin GUI for [Browsersync](https://browsersync.io/)
 * Ability to use in combination with ngrok to tunnel (via secondary terminal window)
+
+Use:
 
 1. Install the [browser-sync](https://www.npmjs.com/package/browser-sync) npm module globally.
 ````
