@@ -19,7 +19,7 @@ apm install atom-live-server
 
 To use this workflow you need to have Node.js installed and be comfortable working with npm packages.
 
-1. Install the live-server npm module globally. With this you will be able to run `live-server` from the command line shown in the next step.
+1. Install the [live-server](https://www.npmjs.com/package/live-server) npm module globally. With this you will be able to run `live-server` from the command line shown in the next step.
 ````
 npm install -g live-server
 ````
@@ -33,6 +33,64 @@ cd cm-code/live-servers/npm-live-server-test
 live-server
 ````
 4. Modify the index.html file and watch it reload in the browser in realtime.
+
+## browser-sync-test
+
+To use this workflow you need to have Node.js installed and be comfortable working with npm packages.
+
+Benefits: Automatic reloading; Ability to open the same localhost on any device on a local network; Admin GUI for [Browsersync](https://browsersync.io/); Ability to use in combination with ngrok to tunnel.
+
+1. Install the [browser-sync](https://www.npmjs.com/package/browser-sync) npm module globally.
+````
+npm install -g browser-sync
+````
+2. Make a new project directory called `test` and navigate to your project directory.
+````
+mkdir test
+cd test
+````
+3. Make a new index.html file and give it structure. Add css and js files the same way and test out selectors and javascript as well.
+````
+touch index.html
+````
+index.html:
+````
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Site</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script type="text/javascript" src="script.js"></script>
+  </head>
+  <body>
+    <h1>Testing browser-sync</h1>
+    <div>
+      <p>Hello</p>
+      <p>World</p>
+    </div>
+  </body>
+</html>
+````
+4. Start browser-sync and tell it to watch for changes in all files in the directory.
+````
+browser-sync start --server -f "*"
+````
+Tip: Add `--no-notify` to the end to turn off the "Connected to BrowserSync" banner.
+````
+browser-sync start --server -f "*" --no-notify
+````
+
+You will notice a Local URL and External URL. Anyone on your local network can type the External URL in and get to your localhost. Whenever you save the project files on your side browser-sync will reload the changes across all the devices.
+
+----
+
+## References
+
+* [atom-live-server](https://atom.io/packages/atom-live-server)
+* [live-server](https://www.npmjs.com/package/live-server)
+* [Browsersync](https://browsersync.io/)
+* [browsercync docs](https://browsersync.io/docs/command-line)
 
 
 
