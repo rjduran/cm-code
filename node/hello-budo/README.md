@@ -205,8 +205,6 @@ Install budo as a global module to follow along with these examples:
     ````
 At this point your development environment is setup such that you can change any code in your index.html file, index.js file, or starter-template.css file and see it reload automatically in the browser. This kind of workflow is very powerfull for prototyping and in the end sharing projects with others via github.  
     
--
-
 Still with me? More soon...Stay Tuned.
 
 
