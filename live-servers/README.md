@@ -8,6 +8,13 @@ To use the examples here just clone the top level cm-code repo and open this dir
 
 To use this workflow you need to have Atom installed and be familiar with installing packages.
 
+Benefits:
+
+* Launch from Atom
+* Automatic reloading
+* Simple and easy to use server for rapid prototyping
+* Ability to use in combination with ngrok to tunnel (via secondary terminal window)
+
 1. Install the [atom-live-server](https://atom.io/packages/atom-live-server) package using apm or in Atom: Atom Preferences > Settings > Install > Search for "atom-live-server" and Install.
 ````
 apm install atom-live-server
@@ -18,6 +25,12 @@ apm install atom-live-server
 ## npm-live-server
 
 To use this workflow you need to have Node.js installed and be comfortable working with npm packages.
+
+Benefits:
+
+* Automatic reloading
+* Simple and easy to use server for rapid prototyping
+* Ability to use in combination with ngrok to tunnel (via secondary terminal window)
 
 1. Install the [live-server](https://www.npmjs.com/package/live-server) npm module globally. With this you will be able to run `live-server` from the command line shown in the next step.
 ````
@@ -38,7 +51,12 @@ live-server
 
 To use this workflow you need to have Node.js installed and be comfortable working with npm packages.
 
-Benefits: Automatic reloading; Ability to open the same localhost on any device on a local network; Admin GUI for [Browsersync](https://browsersync.io/); Ability to use in combination with ngrok to tunnel.
+Benefits:
+
+* Automatic reloading
+* Ability to open the same localhost on any device on a local network
+* Admin GUI for [Browsersync](https://browsersync.io/)
+* Ability to use in combination with ngrok to tunnel (via secondary terminal window)
 
 1. Install the [browser-sync](https://www.npmjs.com/package/browser-sync) npm module globally.
 ````
@@ -82,8 +100,6 @@ browser-sync start --server -f "*" --no-notify
 ````
 
 You will notice a Local URL and External URL. Anyone on your local network can type the External URL in and get to your localhost. Whenever you save the project files on your side browser-sync will reload the changes across all the devices.
-
-----
 
 ## References
 
