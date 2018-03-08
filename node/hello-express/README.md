@@ -227,24 +227,24 @@ Note: You could also just start the app using `npm start`. Specifying the DEBUG 
           li Blue
     ````
 As we saw in exercise-02, this is rendering out as html. You can see this same HTML in the browser using the dev tools.     
-    ````
-    <div id="content">
-      <h1>Express</h1>
-      <p>Welcome to Express</p>
-      <p>Fruit</p>
-      <ul class="fruit">
-        <li>Apples</li>
-        <li>Bananas</li>
-        <li>Oranges</li>
-      </ul>
-      <p>Color</p>
-      <ul class="color">
-        <li>Red</li>
-        <li>Green</li>
-        <li>Blue</li>
-      </ul>      
-    </div>
-    ````             
+````
+<div id="content">
+  <h1>Express</h1>
+  <p>Welcome to Express</p>
+  <p>Fruit</p>
+  <ul class="fruit">
+    <li>Apples</li>
+    <li>Bananas</li>
+    <li>Oranges</li>
+  </ul>
+  <p>Color</p>
+  <ul class="color">
+    <li>Red</li>
+    <li>Green</li>
+    <li>Blue</li>
+  </ul>      
+</div>
+````             
 
 8. Now add a few more lines to the index.pug file just under the last ul. What does this addition do in the browser?
 ````
@@ -259,14 +259,14 @@ As we saw in exercise-02, this is rendering out as html. You can see this same H
         a(href='https://duckduckgo.com/', target='_blank') DuckDuckGo
 ````
 If you inspect the HTML in the browser you will see additional HTML added. Are you starting to see how pug works? I suggest watching a few tutorial videos on the pug syntax to understand how more elements translate to HTML. Here's a good [Getting Started with Pug](https://www.youtube.com/watch?v=leilVbK0xQc) Tutorial.
-    ````
-    <p>Search</p>
-    <ul class="search">
-      <li><a href="https://google.com">Google</a></li>
-      <li><a href="https://bing.com/">Bing</a></li>
-      <li><a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a></li>
-    </ul>
-    ````
+````
+<p>Search</p>
+<ul class="search">
+  <li><a href="https://google.com">Google</a></li>
+  <li><a href="https://bing.com/">Bing</a></li>
+  <li><a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a></li>
+</ul>
+````
         
 References
 
