@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  div#content
+    h1= title
+    p Welcome to #{title}
+    p Fruit
+    ul.fruit
+      li Apples
+      li Bananas
+      li Oranges
+    p Color
+    ul.color
+      li Red
+      li Green
+      li Blue
+    p Search
+    ul.search
+      li
+        a(href='https://google.com') Google
+      li
+        a(href='https://bing.com/') Bing
+      li
+        a(href='https://duckduckgo.com/', target='_blank') DuckDuckGo
