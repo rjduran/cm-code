@@ -107,12 +107,57 @@ browser-sync start --server -f "*" --no-notify
 
 You will notice a Local URL and External URL. Anyone on your local network can type the External URL in and get to your localhost. Whenever you save the project files on your side browser-sync will reload the changes across all the devices.
 
+## serve-test
+
+To use this workflow you need to have Node.js installed and be comfortable working with npm packages.
+
+Benefits:
+
+* Ability to open the same localhost on any device on a local network
+* Ability to require authentication (username and password to access)
+* Ability to use in combination with ngrok to tunnel (via secondary terminal window)
+
+Use:
+
+1. Install the [serve](https://www.npmjs.com/package/serve) npm module globally.
+````
+npm install -g serve
+````
+2. Make a new project directory called `test` and navigate to your project directory.
+````
+mkdir test
+cd test
+````
+3. Make a new index.html file and give it structure. Add css and js files the same way and test out selectors and javascript as well.
+````
+touch index.html
+````
+index.html:
+````
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>My Site</title>
+  </head>
+  <body>
+    <h1>Testing serve</h1>
+  </body>
+</html>
+````
+4. Start serve to view current site. If you nagivate to a different location on your file system and start serve, you will see the entire folder structure as shown in the file system or terminal with `ls -la`.
+````
+serve
+````
+serve will give you a local URL and "On Your Network" URL for anyone to access your server on your network. serve doesn't have auto reloading so it's not ideal for rapid prototyping like browser-sync or other live servers but its a nice way to deploy a local server for testing. Try it out!
+
 ## References
 
 * [atom-live-server](https://atom.io/packages/atom-live-server)
 * [live-server](https://www.npmjs.com/package/live-server)
 * [Browsersync](https://browsersync.io/)
 * [browsercync docs](https://browsersync.io/docs/command-line)
+* [serve](https://www.npmjs.com/package/serve)
 * [ngrok](https://ngrok.com/)
 
 
