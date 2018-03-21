@@ -233,21 +233,21 @@ To do this you can make use of rdisk and Etcher. Why dd rdisk# instead of dd as 
 
 To make a backup of an SD card:
 
-3. Insert a SD card into the computer
+1. Insert a SD card into the computer
 2. Open Terminal
 3. Look at the list of disks using `diskutil list`. Identity the disk that matches your card. You can tell by looking at the size. Make a note of the disk#.
 4. Enter the following command to make a backup using dd rdisk. Make sure to enter an output file path that has enough storage space to cover the size of the SD card (ie. If its a 16GB card you need at least 16GB of storage space to save an image to).
-  ```
-  sudo dd bs=1m if=/dev/rdisk# of=~/raspbian.img
-  ```
+    ```
+    sudo dd bs=1m if=/dev/rdisk# of=~/raspbian.img
+    ```
 5. Wait anywhere from 6-10 mins, maybe longer for larger cards, until the process completes. If you want to see the progress you can enter "ctrl + t". It will print out how much data has been copied in Bytes. Use a [Bytes to GB](https://www.google.com/search?q=bytes+to+gb&oq=byte&aqs=chrome.1.69i57j69i59.1614j0j1&sourceid=chrome&ie=UTF-8) conversion tool to see in GB.
 6. When complete eject the source SD card.
 
 To restore an image:
 
-3. Insert a SD card into the computer
-1. Open [Etcher](https://etcher.io)
-2. Choose the source image you made a backup of
+1. Insert a SD card into the computer
+2. Open [Etcher](https://etcher.io)
+3. Choose the source image you made a backup of
 4. Choose the SD card as the destination
 5. Click Flash and wait for a few mins
 6. Eject card (This will happen automatically)
