@@ -168,7 +168,9 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 
 ### Install Node.js
   
-Node.js will run on various Raspberry Pi editions as long as there is a binary for it that matches the processor. In the case of the Raspberry Pi 3 Model B, both armv6 and armv7 binaries will work but armv8 (aka arm64) does not even though the device specs state "1.2GHz 64-bit quad-core ARMv8 CPU". _I suspect armv8 will work on the new edition (Raspberry Pi 3 model B+) of the device but have not tested it yet._
+Node.js will run on various Raspberry Pi editions as long as there is a binary for it that matches the processor. In the case of the Raspberry Pi 3 Model B, both armv6 and armv7 binaries will work but armv8 (aka arm64) does not even though the device specs state "1.2GHz 64-bit quad-core ARMv8 CPU". [This post](https://raspberrypi.stackexchange.com/questions/45319/install-newer-node-version-on-pi-3) on stackexchange goes into some detail about the different processors and what works.
+
+_I suspect armv8 will work on the new edition (Raspberry Pi 3 model B+) of the device but have not tested it yet._
 
 To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv7 to copy the link address. You will need the URL in the next command.
 ```
