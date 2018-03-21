@@ -48,7 +48,7 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 
 1. [Download and Install Raspbian (Lite)](https://www.raspberrypi.org/downloads/raspbian/)
 
-  The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. **Download the Lite version.** It will not have a familiar desktop interface. It will be the base OS with a command line interface.
+    The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. **Download the Lite version.** It will not have a familiar desktop interface. It will be the base OS with a command line interface.
 
   What's a microSD card?
 
@@ -56,27 +56,27 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 
   **Option 1: Etcher (Beginner)**
   
-    * Download and install [Etcher](https://etcher.io). It makes writing disk images to a SD card very easy.
-    * Unzip the Raspbian disk image to extract the .img file. Etcher works with either file.
-    * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
-    * Open Etcher and point to the zip or img file, your microSD card
-    * Click Flash and wait for a few mins for the process to finish. The speed at which it flashes the card will depend on the transfer rate of your card.
-    * Enter system password when prompted
-    * Eject Drive (Etcher does this automatically)
+  * Download and install [Etcher](https://etcher.io). It makes writing disk images to a SD card very easy.
+  * Unzip the Raspbian disk image to extract the .img file. Etcher works with either file.
+  * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
+  * Open Etcher and point to the zip or img file, your microSD card
+  * Click Flash and wait for a few mins for the process to finish. The speed at which it flashes the card will depend on the transfer rate of your card.
+  * Enter system password when prompted
+  * Eject Drive (Etcher does this automatically)
     
   **Option 2: Command Line (Advanced)**
     
-    * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
-    * Open Terminal    
-    * Type `diskutil list` to see a list of all the disks available. Pay special attention to the _disk#_ shown under IDENTIFIER in the list of drives. You need to make sure you are working with the correct disk. Otherwise, you can cause damage and lose data. Be cautious and understand the command you are entering. Especially if you are doing anything with `sudo` aka super user privileges. Look at the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md) for more info.    
-    ```   
-    diskutil list
-    diskutil unmountDisk /dev/disk1
-    sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
-    ```
-    * Enter system password when prompted
-    * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
-    * Eject Drive
+  * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
+  * Open Terminal    
+  * Type `diskutil list` to see a list of all the disks available. Pay special attention to the _disk#_ shown under IDENTIFIER in the list of drives. You need to make sure you are working with the correct disk. Otherwise, you can cause damage and lose data. Be cautious and understand the command you are entering. Especially if you are doing anything with `sudo` aka super user privileges. Look at the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md) for more info.    
+  ```   
+  diskutil list
+  diskutil unmountDisk /dev/disk1
+  sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
+  ```
+  * Enter system password when prompted
+  * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
+  * Eject Drive
 
   After flashing the microSD card, put it into the small slot on the side of the board and connect all the peripherals (display, keyboard, power, ethernet). When you plugin the power the board will turn on. Do this last since you want to see the boot up process on the screen.
   
