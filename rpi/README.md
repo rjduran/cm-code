@@ -1,6 +1,6 @@
 # Raspberry Pi
 
-This guide walks through the process of setting up a Raspberry Pi 3 and installing Node.js.
+This guide walks through the process of setting up a Raspberry Pi and installing Node.js. It also includes information about backing up SD cards and tips and tricks to constructing a solid system for rapid prototyping with hardware.
 
 _Note: this is a living document and will be updated often. In time this document will contain additional setup options for different devices, recommended packages, and steps to setup a system for prototyping with additional hardware._
 
@@ -8,17 +8,20 @@ At the time of this writing **Raspbian Stretch** and **Node v8.10.0** are the la
 
 ## Table of Contents
 
-* [Raspberry Pi 3](#raspberry-pi-3)
-  * [Setup Device](#setup-device)
-  * [Install Node.js](#install-nodejs)
-  * [Install Git](#install-git)
-* [Raspberry Pi Zero W](#raspberry-pi-zero-w)
+* [Devices](#devices)
+  * [Raspberry Pi 3 (Model B)](#raspberry-pi-3)  
+  * [Raspberry Pi Zero W](#raspberry-pi-zero-w)
+  * [Raspberry Pi Zero](#raspberry-pi-zero)
+* [Device Setup](#device-setup)
+* [Install Node.js](#install-nodejs)
+* [Install Git](#install-git)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
+* [How to Email Device IP Address](#how-to-email-device-ip-address)
 * [References](#references)    
 
-## Raspberry Pi 3
+## Devices
 
-**Hardware:**
+### Raspberry Pi 3 (Model B)
 
 [Raspberry Pi 3 Model B](https://www.raspberrypi.org/products/raspberry-pi-3-model-b/)
 
@@ -39,18 +42,46 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 * Micro SD card slot (now push-pull rather than push-push)
 * VideoCore IV 3D graphics core
 
-**Software:**
+### Raspberry Pi Zero W
 
-* [Rasbian (Stretch Lite)](https://www.raspberrypi.org/downloads/raspbian/)
-* [Node.js (8.10.0)](https://nodejs.org/en/download/)
+[Raspberry Pi Zero W](https://www.raspberrypi.org/products/raspberry-pi-zero-w/)
 
+The Raspberry Pi Zero W extends the Pi Zero family. Launched at the end of February 2017, the Pi Zero W has all the functionality of the original Pi Zero, but comes with with added connectivity for Bluetooth and Wifi.
 
-### Setup Device
+* 1GHz, single-core CPU
+* 512MB RAM
+* 802.11 b/g/n wireless LAN
+* Bluetooth 4.1
+* Bluetooth Low Energy (BLE)
+* Mini HDMI and USB On-The-Go ports
+* Micro USB power
+* HAT-compatible 40-pin header
+* Composite video and reset headers
+* CSI camera connector
 
-1. [Download and Install Raspbian (Lite)](https://www.raspberrypi.org/downloads/raspbian/)
+### Raspberry Pi Zero
 
-    The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. **Download the Lite version.** It will not have a familiar desktop interface. It will be the base OS with a command line interface.
+[Raspberry Pi Zero](https://www.raspberrypi.org/products/raspberry-pi-zero/)
 
+The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A tiny Raspberry Pi that’s affordable enough for any project!
+
+* 1GHz single-core CPU
+* 512MB RAM
+* Mini HDMI port
+* Micro USB OTG port
+* Micro USB power
+* HAT-compatible 40-pin header
+* Composite video and reset headers
+* CSI camera connector (v1.3 only)
+
+## Setup Device
+
+1. Download and Install Raspbian (Lite)
+    
+    The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. The lite version will not have a familiar desktop interface. It will be the base OS with a command line interface.
+    
+    **[Download Rasbian (Stretch Lite)](https://www.raspberrypi.org/downloads/raspbian/)**        
+        
     What's a microSD card?
 
     Its a really small SD card. They are commonly used in mobile phones and other small embedded systems. Think about it like a really tiny hard drive used. The purpose of the microSD card in this case is to run the OS and act as the storage device. There are a few ways to do this outlined in the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md). I will describe two ways to do this. Both methods have the same end result.
@@ -97,7 +128,7 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
     * Advanced Options > Expand Filesystem
       * Expanding the file system ensures that all of the SD card storage is available to Raspbian (the OS).
       * Reboot the device, login, and enter the config settings again (blue screen).
-    * Localization Options
+    * Localisation Options
       * Change locale – Hit Enter (the screen will momentarily blip to black before returning to Raspi-config)
       * Arrow down to "en_US.UTF-8 UTF-8".
       * Press the spacebar to put a * in the brackets [].
@@ -105,12 +136,12 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
       * (Another screen appears.) Select "en_US.UTF8" as the default locale.
       * Hit the tab key and then hit the enter key to select <Ok>.
       * (The system will generate the new locales and then bring you back to the main menu.)
-    * Localization Options
+    * Localisation Options
       * Change Timezone – Hit Enter
       * Select your geographic area (US in my case)
       * Select your specific time zone (Mountain in my case)
       * Hit the tab key and then hit the enter key to select <Ok>.
-    * Localization Options
+    * Localisation Options
       * Change Keyboard Layout – Hit Enter
       * Change keyboard if needed.  Here’s the changes I made:
       * Select Generic 105 keyboard (Intl)
@@ -119,7 +150,13 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
         * Key to function as AltGr (I chose the default for the keyboard layout.)
         * Compose key – No compose key    
     
-    Goto <Finish> when done to return to the terminal. Next, you want to configure Wifi so you can connect to the internet. If you are already using an ethernet cable then you should have an IP address already. Type `ifconfig` and look for inet under eth0. There should be an IP address shown. Depending on the router configuration it may be something like 192.168.0.xx or 10.1.10.xx. This is your IP address for a wired connection. Not Wifi.
+    **Raspberry Pi 3:**
+    
+    Goto Finish when done to return to the terminal. Next, you want to configure Wifi so you can connect to the internet. If you are already using an ethernet cable then you should have an IP address already. Type `ifconfig` and look for inet under eth0. There should be an IP address shown. Depending on the router configuration it may be something like 192.168.0.xx or 10.1.10.xx. This is your IP address for a wired connection. Not Wifi.
+    
+    **Raspberry Pi Zero:**
+    
+    Goto Finish when done to return to the terminal. Next, you want to configure Wifi so you can connect to the internet. The device doesn't include Wifi so you need an ethernet dongle or Wifi USB adapter. Plug in the adapter at this time to connect to the internet after you configure the Wifi connection in the next step.
 
 3. Configure WiFi (and get IP address)
 
@@ -142,8 +179,10 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
     ```
     ifconfig wlan0
     ```
-
-4. SSH into pi from Mac (Optional)
+    
+    You should now have an IP address. It will show up just above the login prompt after rebooting the device. With this you can now ssh into the device from another terminal. You no longer need a USB keyboard or display to work with the device.
+    
+4. SSH Into Device (Optional)
 
     SSH is disabled by default and needs to be enabled in order to work. To do this go to the system configuration via `sudo raspi-config` and navigate to the Interfacing Options menu item. Enable SSH (2nd item in menu). After doing this save and exit the config menu to return to the terminal prompt.
     
@@ -165,26 +204,47 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
     sudo apt-get dist-upgrade
     ```
     
-    At this point you have a functional device to begin customizing. We will start by installing Node.js.
+    At this point you have a basic foundation to begin customizing for any application.
 
-### Install Node.js
+## Install Node.js
   
-Node.js will run on various Raspberry Pi editions as long as there is a binary for it that matches the processor. In the case of the Raspberry Pi 3 Model B, both armv6 and armv7 binaries will work but armv8 (aka arm64) does not even though the device specs state "1.2GHz 64-bit quad-core ARMv8 CPU". [This post](https://raspberrypi.stackexchange.com/questions/45319/install-newer-node-version-on-pi-3) on stackexchange goes into some detail about the different processors and what works.
+Node.js will run on various Raspberry Pi editions as long as there is a binary for it that matches the processor. In the case of the Raspberry Pi 3 Model B, both armv6 and armv7 binaries will work but armv8 (aka arm64) does not even though the device specs state "1.2GHz 64-bit quad-core ARMv8 CPU". In the case of the Raspberry Pi Zero only the armv6 will work. [This post](https://raspberrypi.stackexchange.com/questions/45319/install-newer-node-version-on-pi-3) on stackexchange goes into some detail about the different processors and what works.
 
 _I suspect armv8 will work on the new edition (Raspberry Pi 3 model B+) of the device but have not tested it yet._
 
-To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv7 to copy the link address. You will need the URL in the next command.
+To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv6 or ARMv7 to copy the link address. You will need the URL in the next command.
+
+Commands Used
+
+* `wget` - This downloads the file from the URL specified
+* `tar` - This unzips an archive of file type .tar.xz
+* `cd` - Change into the unzipped directory
+
+**Raspberry Pi 3**
+
 ```
 wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv7l.tar.xz
 tar -xvf node-v8.10.0-linux-armv7l.tar.xz
 cd node-v8.10.0-linux-armv7l
 ```
-* `wget` - This downloads the file from the URL specified
-* `tar` - This unzips an archive of file type .tar.xz
-* `cd` - Change into the unzipped directory
+
+**Raspberry Pi Zero W**
+
+```
+wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv6l.tar.xz
+tar node-v8.10.0-linux-armv6l.tar.xz
+cd node-v8.10.0-linux-armv6l
+```
+
+**Raspberry Pi Zero**
+
+```
+wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv6l.tar.xz
+tar node-v8.10.0-linux-armv6l.tar.xz
+cd node-v8.10.0-linux-armv6l
+```
 
 Install Node:
-
 ```
 sudo cp -R * /usr/local/
 ```
@@ -197,7 +257,7 @@ npm -v
 
 At this point you have node and npm installed. Possible next steps, install git, install npm modules, hook up hardware peripherals, etc. The sky is the limit.
 
-### Install Git
+## Install Git
 
 Installing Git is relatively straightforward. Make sure you check for any updates to packages first. This is common when installing any new software.
 
@@ -220,11 +280,7 @@ Check version:
 ```
 git --version
 ```
-
-## Raspberry Pi Zero W
-
-Coming soon
-
+        
 ## How to Backup SD Cards
 
 It can be very useful to make backups of SD cards for a number of reasons. The obvious one being that if and when your card fails, you can make a new card that is identical. Another reason is that you may not want to configure a new system from scratch every time you start a project. If you have backups of a basic system setup, you can quickly get to building vs spending time configuring a new system from the ground up.
@@ -253,6 +309,10 @@ To restore an image:
 6. Eject card (This will happen automatically)
 
 At this point, you should be able to boot up the flashed card in a similar device. Meaning, if you made an image for a Raspberry Pi 3 device you can run the restored image in the same kind of device. While it does need the be the same model, it doesn't necessarily need to be the exact same device the original card was configured from.
+
+## How to Email Device IP Address
+
+Coming Soon
 
 ## References
 
