@@ -50,75 +50,75 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 
     The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. **Download the Lite version.** It will not have a familiar desktop interface. It will be the base OS with a command line interface.
 
-  What's a microSD card?
+    What's a microSD card?
 
-  Its a really small SD card. They are commonly used in mobile phones and other small embedded systems. Think about it like a really tiny hard drive used. The purpose of the microSD card in this case is to run the OS and act as the storage device. There are a few ways to do this outlined in the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md). I will describe two ways to do this. Both methods have the same end result.
+    Its a really small SD card. They are commonly used in mobile phones and other small embedded systems. Think about it like a really tiny hard drive used. The purpose of the microSD card in this case is to run the OS and act as the storage device. There are a few ways to do this outlined in the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md). I will describe two ways to do this. Both methods have the same end result.
 
-  **Option 1: Etcher (Beginner)**
+    **Option 1: Etcher (Beginner)**
   
-  * Download and install [Etcher](https://etcher.io). It makes writing disk images to a SD card very easy.
-  * Unzip the Raspbian disk image to extract the .img file. Etcher works with either file.
-  * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
-  * Open Etcher and point to the zip or img file, your microSD card
-  * Click Flash and wait for a few mins for the process to finish. The speed at which it flashes the card will depend on the transfer rate of your card.
-  * Enter system password when prompted
-  * Eject Drive (Etcher does this automatically)
+    * Download and install [Etcher](https://etcher.io). It makes writing disk images to a SD card very easy.
+    * Unzip the Raspbian disk image to extract the .img file. Etcher works with either file.
+    * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
+    * Open Etcher and point to the zip or img file, your microSD card
+    * Click Flash and wait for a few mins for the process to finish. The speed at which it flashes the card will depend on the transfer rate of your card.
+    * Enter system password when prompted
+    * Eject Drive (Etcher does this automatically)
     
-  **Option 2: Command Line (Advanced)**
+    **Option 2: Command Line (Advanced)**
     
-  * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
-  * Open Terminal    
-  * Type `diskutil list` to see a list of all the disks available. Pay special attention to the _disk#_ shown under IDENTIFIER in the list of drives. You need to make sure you are working with the correct disk. Otherwise, you can cause damage and lose data. Be cautious and understand the command you are entering. Especially if you are doing anything with `sudo` aka super user privileges. Look at the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md) for more info.    
-  ```   
-  diskutil list
-  diskutil unmountDisk /dev/disk1
-  sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
-  ```
-  * Enter system password when prompted
-  * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
-  * Eject Drive
+    * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
+    * Open Terminal    
+    * Type `diskutil list` to see a list of all the disks available. Pay special attention to the _disk#_ shown under IDENTIFIER in the list of drives. You need to make sure you are working with the correct disk. Otherwise, you can cause damage and lose data. Be cautious and understand the command you are entering. Especially if you are doing anything with `sudo` aka super user privileges. Look at the [documentation](https://www.raspberrypi.org/documentation/installation/installing-images/mac.md) for more info.    
+      ```   
+      diskutil list
+      diskutil unmountDisk /dev/disk1
+      sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
+      ```
+      * Enter system password when prompted
+      * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
+      * Eject Drive
 
-  After flashing the microSD card, put it into the small slot on the side of the board and connect all the peripherals (display, keyboard, power, ethernet). When you plugin the power the board will turn on. Do this last since you want to see the boot up process on the screen.
+    After flashing the microSD card, put it into the small slot on the side of the board and connect all the peripherals (display, keyboard, power, ethernet). When you plugin the power the board will turn on. Do this last since you want to see the boot up process on the screen.
   
-  After the system boots up you should see a prompt for login and password.  
-  * Default Login: _pi_
-  * Default Password: _raspberry_
-  
-  At this point your device is ready to be configured. Congratulations!
+    After the system boots up you should see a prompt for login and password.  
+    * Default Login: _pi_
+    * Default Password: _raspberry_
+    
+    At this point your device is ready to be configured. Congratulations!
   
 2. Configure System (localization, timezone, keyboard, etc)
   
-  The first thing to do is configure some basic system settings. This same menu is where you can change the user password and setup other kinds of options for booting, network and more.
+    The first thing to do is configure some basic system settings. This same menu is where you can change the user password and setup other kinds of options for booting, network and more.
   
-  ```
-  sudo raspi-config
-  ```
-  * Advanced Options > Expand Filesystem
-    * Expanding the file system ensures that all of the SD card storage is available to Raspbian (the OS).
-    * Reboot the device, login, and enter the config settings again (blue screen).
-  * Localization Options
-    * Change locale – Hit Enter (the screen will momentarily blip to black before returning to Raspi-config)
-    * Arrow down to "en_US.UTF-8 UTF-8".
-    * Press the spacebar to put a * in the brackets [].
-    * Hit the tab key and then hit the Enter key to select <Ok>.
-    * (Another screen appears.) Select "en_US.UTF8" as the default locale.
-    * Hit the tab key and then hit the enter key to select <Ok>.
-    * (The system will generate the new locales and then bring you back to the main menu.)
-  * Localization Options
-    * Change Timezone – Hit Enter
-    * Select your geographic area (US in my case)
-    * Select your specific time zone (Mountain in my case)
-    * Hit the tab key and then hit the enter key to select <Ok>.
-  * Localization Options
-    * Change Keyboard Layout – Hit Enter
-    * Change keyboard if needed.  Here’s the changes I made:
-    * Select Generic 105 keyboard (Intl)
-      * Select Other
-      * Select English (US)
-      * Key to function as AltGr (I chose the default for the keyboard layout.)
-      * Compose key – No compose key    
-  
-  Goto <Finish> when done to return to the terminal. Next, you want to configure Wifi so you can connect to the internet. If you are already using an ethernet cable then you should have an IP address already. Type `ifconfig` and look for inet under eth0. There should be an IP address shown. Depending on the router configuration it may be something like 192.168.0.xx or 10.1.10.xx. This is your IP address for a wired connection. Not Wifi.
+    ```
+    sudo raspi-config
+    ```
+    * Advanced Options > Expand Filesystem
+      * Expanding the file system ensures that all of the SD card storage is available to Raspbian (the OS).
+      * Reboot the device, login, and enter the config settings again (blue screen).
+    * Localization Options
+      * Change locale – Hit Enter (the screen will momentarily blip to black before returning to Raspi-config)
+      * Arrow down to "en_US.UTF-8 UTF-8".
+      * Press the spacebar to put a * in the brackets [].
+      * Hit the tab key and then hit the Enter key to select <Ok>.
+      * (Another screen appears.) Select "en_US.UTF8" as the default locale.
+      * Hit the tab key and then hit the enter key to select <Ok>.
+      * (The system will generate the new locales and then bring you back to the main menu.)
+    * Localization Options
+      * Change Timezone – Hit Enter
+      * Select your geographic area (US in my case)
+      * Select your specific time zone (Mountain in my case)
+      * Hit the tab key and then hit the enter key to select <Ok>.
+    * Localization Options
+      * Change Keyboard Layout – Hit Enter
+      * Change keyboard if needed.  Here’s the changes I made:
+      * Select Generic 105 keyboard (Intl)
+        * Select Other
+        * Select English (US)
+        * Key to function as AltGr (I chose the default for the keyboard layout.)
+        * Compose key – No compose key    
+    
+    Goto <Finish> when done to return to the terminal. Next, you want to configure Wifi so you can connect to the internet. If you are already using an ethernet cable then you should have an IP address already. Type `ifconfig` and look for inet under eth0. There should be an IP address shown. Depending on the router configuration it may be something like 192.168.0.xx or 10.1.10.xx. This is your IP address for a wired connection. Not Wifi.
 
 3. Configure WiFi (and get IP address)
 
