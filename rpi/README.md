@@ -74,9 +74,9 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
       diskutil unmountDisk /dev/disk1
       sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
       ```
-      * Enter system password when prompted
-      * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
-      * Eject Drive
+    * Enter system password when prompted
+    * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
+    * Eject Drive
 
     After flashing the microSD card, put it into the small slot on the side of the board and connect all the peripherals (display, keyboard, power, ethernet). When you plugin the power the board will turn on. Do this last since you want to see the boot up process on the screen.
   
@@ -122,49 +122,49 @@ The Raspberry Pi 3 is the third-generation Raspberry Pi. It replaced the Raspber
 
 3. Configure WiFi (and get IP address)
 
-  Edit the wpa_supplicant.conf file to include a network definition.
-  ```
-  sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
-  ```
-  Added to bottom of file:
-  ```
-  ...
-  network={
-      ssid="STUDIO-2.4"
-      psk="password"
-  }
-  ```
-  
-  Reboot for the Wifi settings to take effect.
+    Edit the wpa_supplicant.conf file to include a network definition.
+    ```
+    sudo vi /etc/wpa_supplicant/wpa_supplicant.conf
+    ```
+    Added to bottom of file:
+    ```
+    ...
+    network={
+        ssid="STUDIO-2.4"
+        psk="password"
+    }
+    ```
+    
+    Reboot for the Wifi settings to take effect.
 
-  Print out the network settings for wlan0 (Wifi device)
-  ```
-  ifconfig wlan0
-  ```
+    Print out the network settings for wlan0 (Wifi device)
+    ```
+    ifconfig wlan0
+    ```
 
 4. SSH into pi from Mac (Optional)
 
-  SSH is disabled by default and needs to be enabled in order to work. To do this go to the system configuration via `sudo raspi-config` and navigate to the Interfacing Options menu item. Enable SSH (2nd item in menu). After doing this save and exit the config menu to return to the terminal prompt.
-  
-  This step is optional and depends on your application and preference. If you don't want to toggle between two different keyboards and have the Raspberry Pi plugged into a separate display with keyboard to use it, then just ssh into it via Terminal. You can have multiple terminal windows open or use tabs or use `screen`.
-  ```
-  ssh pi@ip-address
-  user: pi
-  pass: raspberry
-  ```
-  **After logging into your device you will see a message suggesting you to change the username and password to make it more secure. I recommend doing this later once you get the hang of working with the device. For the moment it's not a big issue.**
-  
-  You may be asked if you want to approve the "authenticity of host". Enter "yes" and Enter. This will add a line item to your ~/.ssh/known_hosts file. To view this you can enter `cat ~/.ssh/known_hosts`. You will see the IP address of your device as the last (most recent) thing added to the bottom of the file. This essentially allows your computer to trust the connection to the device.
+    SSH is disabled by default and needs to be enabled in order to work. To do this go to the system configuration via `sudo raspi-config` and navigate to the Interfacing Options menu item. Enable SSH (2nd item in menu). After doing this save and exit the config menu to return to the terminal prompt.
+    
+    This step is optional and depends on your application and preference. If you don't want to toggle between two different keyboards and have the Raspberry Pi plugged into a separate display with keyboard to use it, then just ssh into it via Terminal. You can have multiple terminal windows open or use tabs or use `screen`.
+    ```
+    ssh pi@ip-address
+    user: pi
+    pass: raspberry
+    ```
+    **After logging into your device you will see a message suggesting you to change the username and password to make it more secure. I recommend doing this later once you get the hang of working with the device. For the moment it's not a big issue.**
+    
+    You may be asked if you want to approve the "authenticity of host". Enter "yes" and Enter. This will add a line item to your ~/.ssh/known_hosts file. To view this you can enter `cat ~/.ssh/known_hosts`. You will see the IP address of your device as the last (most recent) thing added to the bottom of the file. This essentially allows your computer to trust the connection to the device.
 
 5. Apply Raspbian (OS) Updates
 
-  This can take awhile depending on your internet connection and if you are using wifi or a cable. The size and speed of your SD card and the version of Raspberry Pi (1, 3, Zero, etc) can also be a factor.
-  ```
-  sudo apt-get update
-  sudo apt-get dist-upgrade
-  ```
-  
-  At this point you have a functional device to begin customizing. We will start by installing Node.js.
+    This can take awhile depending on your internet connection and if you are using wifi or a cable. The size and speed of your SD card and the version of Raspberry Pi (1, 3, Zero, etc) can also be a factor.
+    ```
+    sudo apt-get update
+    sudo apt-get dist-upgrade
+    ```
+    
+    At this point you have a functional device to begin customizing. We will start by installing Node.js.
 
 ### Install Node.js
   
