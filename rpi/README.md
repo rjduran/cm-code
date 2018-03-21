@@ -13,7 +13,9 @@ At the time of this writing **Raspbian Stretch** and **Node v8.10.0** are the la
   * [Raspberry Pi Zero W](#raspberry-pi-zero-w)
   * [Raspberry Pi Zero](#raspberry-pi-zero)
 * [Device Setup](#device-setup)
-* [Install Node.js](#install-nodejs)
+* [Node.js](#nodejs)
+  * [How to Install Node.js](#how-to-install-nodejs)
+  * [How to Uninstall Node.js](#how-to-uninstall-nodejs)
 * [Install Git](#install-git)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
 * [How to Email Device IP Address](#how-to-email-device-ip-address)
@@ -206,7 +208,9 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     
     At this point you have a basic foundation to begin customizing for any application.
 
-## Install Node.js
+## Node.js
+
+### How to Install Node.js
   
 Node.js will run on various Raspberry Pi editions as long as there is a binary for it that matches the processor. In the case of the Raspberry Pi 3 Model B, both armv6 and armv7 binaries will work but armv8 (aka arm64) does not even though the device specs state "1.2GHz 64-bit quad-core ARMv8 CPU". In the case of the Raspberry Pi Zero only the armv6 will work. [This post](https://raspberrypi.stackexchange.com/questions/45319/install-newer-node-version-on-pi-3) on stackexchange goes into some detail about the different processors and what works.
 
@@ -256,6 +260,23 @@ npm -v
 ```
 
 At this point you have node and npm installed. Possible next steps, install git, install npm modules, hook up hardware peripherals, etc. The sky is the limit.
+
+### How to Uninstall Node.js
+
+Remove all these files from the system. To locate the node executable on the system type `which node`. It will likely return the location `/usr/local/bin`.
+
+```
+sudo rm -rf /usr/local/lib/node_modules
+sudo rm -rf /usr/local/bin/node
+sudo rm -rf /usr/local/bin/npm
+sudo rm -rf /usr/local/bin/npx
+sudo rm -rf /usr/local/include/node
+sudo rm -rf /usr/local/share/doc/node
+sudo rm -rf /usr/local/share/systemtap/tapset/node.stp
+sudo rm -rf ~/.npm
+```
+
+You can verify node is no longer available if you try to type in `node -v`. It will no longer return a version number.
 
 ## Install Git
 
