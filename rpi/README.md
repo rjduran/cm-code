@@ -252,7 +252,7 @@ To restore an image:
 5. Click Flash and wait for a few mins
 6. Eject card (This will happen automatically)
 
-At this point, you should be able to boot up the flashed card in a similar device. Meaning, if you made an image for a Raspberry Pi 3 device you can run the restored image in the same kind of device. It doesn't necessarily need to be the exact same device the original card was configured from.
+At this point, you should be able to boot up the flashed card in a similar device. Meaning, if you made an image for a Raspberry Pi 3 device you can run the restored image in the same kind of device. While it does need the be the same model, it doesn't necessarily need to be the exact same device the original card was configured from.
 
 ## References
 
