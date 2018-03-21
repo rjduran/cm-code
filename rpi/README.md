@@ -9,7 +9,7 @@ At the time of this writing **Raspbian Stretch** and **Node v8.10.0** are the la
 ## Table of Contents
 
 * [Devices](#devices)
-  * [Raspberry Pi 3 (Model B)](#raspberry-pi-3)  
+  * [Raspberry Pi 3 (Model B)](#raspberry-pi-3-model-b)  
   * [Raspberry Pi Zero W](#raspberry-pi-zero-w)
   * [Raspberry Pi Zero](#raspberry-pi-zero)
 * [Device Setup](#device-setup)
@@ -74,7 +74,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
 * Composite video and reset headers
 * CSI camera connector (v1.3 only)
 
-## Setup Device
+## Device Setup
 
 1. Download and Install Raspbian (Lite)
     
