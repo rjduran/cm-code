@@ -218,7 +218,7 @@ Node.js will run on various Raspberry Pi editions as long as there is a binary f
 
 _I suspect armv8 will work on the new edition (Raspberry Pi 3 model B+) of the device but have not tested it yet._
 
-To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv6 or ARMv7 to copy the link address. You will need the URL in the next command.
+To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv6 or ARMv7 to copy the link address. You will need the URL in the next command. I have listed out the commands needed to install node for convenience. 
 
 Commands Used
 
