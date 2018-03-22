@@ -120,7 +120,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     
     At this point your device is ready to be configured. Congratulations!
   
-2. Configure System (localization, timezone, keyboard, etc)
+2. Configure System (localization, timezone, keyboard, enable SSH, etc)
   
     The first thing to do is configure some basic system settings. This same menu is where you can change the user password and setup other kinds of options for booting, network and more.
   
@@ -150,7 +150,9 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
         * Select Other
         * Select English (US)
         * Key to function as AltGr (I chose the default for the keyboard layout.)
-        * Compose key – No compose key    
+        * Compose key – No compose key   
+    * Interfacing Options
+      * Enable SSH
     
     **Raspberry Pi 3:**
     
@@ -186,7 +188,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     
 4. SSH Into Device (Optional)
 
-    SSH is disabled by default and needs to be enabled in order to work. To do this go to the system configuration via `sudo raspi-config` and navigate to the Interfacing Options menu item. Enable SSH (2nd item in menu). After doing this save and exit the config menu to return to the terminal prompt.
+    SSH is disabled by default and needs to be enabled in order to work. To do this go to the system configuration via `sudo raspi-config` and navigate to the Interfacing Options menu item. Enable SSH (2nd item in menu). If you already did this in Step 2 above then you dont need to do it again. After doing this save and exit the config menu to return to the terminal prompt.
     
     This step is optional and depends on your application and preference. If you don't want to toggle between two different keyboards and have the Raspberry Pi plugged into a separate display with keyboard to use it, then just ssh into it via Terminal. You can have multiple terminal windows open or use tabs or use `screen`.
     ```
@@ -262,6 +264,8 @@ npm -v
 At this point you have node and npm installed. Possible next steps, install git, install npm modules, hook up hardware peripherals, etc. The sky is the limit.
 
 ### How to Uninstall Node.js
+
+The purpose of this is to completely remove node from the device. This would be needed if you no longer want to have node on your system.
 
 Remove all these files from the system. To locate the node executable on the system type `which node`. It will likely return the location `/usr/local/bin`.
 
