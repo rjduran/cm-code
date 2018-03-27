@@ -1,8 +1,18 @@
 # hello-npm
 
-This example shows the basics of using npm (node package manager) to setup a project and in a common workflow.
+These exercises show the basics of using npm (node package manager) to setup a project and in a modern web development workflow.
 
-What is npm?
+## Table of Contents
+
+* [What is npm?](#what-is-npm)
+* [Exercise 01: Initialize a project with a package.json file](#exercise-01-initialize-a-project-with-a-packagejson-file)
+* [Exercise 02: Install a npm package](#exercise-02-install-a-npm-package)
+* [Exercise 03: Build a simple webpage and use jQuery](#exercise-03-build-a-simple-webpage-and-use-jquery)
+* [Exercise 04: Install browserify (an npm package) globally and use it in a simple webpage](#exercise-04-install-browserify-an-npm-package-globally-and-use-it-in-a-simple-webpage)
+* [Exercise 05: Adding Bootstrap to a project](#exercise-05-adding-bootstrap-to-a-project)
+* [References](#references)
+
+## What is npm?
 
 [npm](https://www.npmjs.com/) is a package manager installed with [node.js](nodejs.org). Read the (outstanding) [documentation](https://docs.npmjs.com/) to get familiar with how it works.
 
@@ -129,7 +139,7 @@ live-server
     ````
 5. Start a live-server instance for your current project and test it out. Using the Chrome Dev Tools, monitor the console to see what happens when you click on the "Click Me!" div in your page. You should see "yay! div clicked" print out to the console.
  
-## Example-05: Adding Bootstrap to a project
+## Exercise 05: Adding Bootstrap to a project
 
 1. Repeat everything in Exercise 04 but use exercise-05 for the name.
 2. Install [bootstrap](https://www.npmjs.com/package/bootstrap) and [popper.js](https://www.npmjs.com/package/popper.js)(bootstrap dependency) with npm.
