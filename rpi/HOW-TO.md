@@ -8,8 +8,12 @@ _Note: this is a living document and will be updated often.._
 
 * [How to Locate a Device on the Local Network](#how-to-locate-a-device-on-the-local-network)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
-
-
+* [How to Move Files](#how-to-move-files)
+    * Cyberduck
+    * sftp
+    * scp
+* [References](#references)
+<!-- testing -->
 
 ## How to Locate a Device on the Local Network
 
@@ -90,4 +94,69 @@ To restore an image:
 
 At this point, you should be able to boot up the flashed card in a similar device. Meaning, if you made an image for a Raspberry Pi 3 device you can run the restored image in the same kind of device. While it does need the be the same model, it doesn't necessarily need to be the exact same device the original card was configured from.
 
+## How to Move Files
 
+### [cyberduck](https://cyberduck.io/)
+
+To copy files to/from a device:
+
+* Use the SFTP (SSH protocol)
+* address: 192.168.x.x or 10.1.x.x
+* user: pi
+* pass: raspberry
+
+### sftp
+
+To copy files to/from a device:
+```
+$ sftp pi@ip-address
+Enter password (raspberry)
+```
+
+* Use `put` to transfer a file.
+* Use `put -r` to transfer whole directory to /home/pi/myfolder. Note you need to make the target location on the device before copying files over.
+
+```
+sftp> put -r myfolder
+```
+
+### scp
+
+Open the terminal and use the following commands to move files and folders from place to place.
+
+* `~` or `~/` or `/home/pi` is the root directory
+* `pi` is the default user name
+
+**Local Machine --> Raspberry Pi**
+
+Copy a file from local machine to Raspberry Pi:
+```
+scp file.txt pi@ip-address:~
+```
+
+Copy a folder from local machine to Raspberry Pi:
+```
+scp -r my-folder pi@ip-address:~
+```
+
+**Raspberry Pi --> Local Machine**
+
+Copy a file from Raspberry Pi to local machine:
+```
+sudo scp pi@ip-address:file.txt ~/Desktop/file.txt
+```
+
+Copy a folder from Raspberry Pi to local machine:
+```
+sudo scp -r pi@ip-address:folder ~/Desktop/folder
+```
+
+**Raspberry Pi --> Raspberry Pi**
+
+Copy file from Raspberry Pi 1 (SSH logged into) to Raspberry Pi 2:
+```
+$ scp test.txt pi@ip-address:~
+```
+
+## References
+* [Raspberry Pi Commands](https://github.com/rjduran/cm-code/blob/master/rpi/COMMANDS.md)
