@@ -10,7 +10,7 @@ This document describes several commonly used commands.
   * [Networking and Internet Commands](#networking-and-internet-commands)  
   * [System Information Commands](#system-information-commands)  
   * [Disk Management Commands](#disk-management-commands)  
-  * [Permission Commands](#permission-commands)
+  * [Permission Commands](#permission-commands)  
 * [References](#references)
 
 ## Command List
@@ -47,6 +47,8 @@ Most of the commands below have a lot of other useful options that I don't menti
 `shutdown -h 01:22`: To shutdown at 1:22 AM.
 
 `startx`: Opens the GUI (Graphical User Interface) if installed. Won't work for Lite version.
+
+`arp -a`: Type this on either your local machine or Raspberry Pi to see what devices are connected to the local network. This can help identify what the IP address is for your device.
 
 
 ### File and Directory Commands
@@ -117,6 +119,7 @@ UP key: Pressing the UP key will print the last command entered into the command
 
 `vcgencmd get_mem arm && vcgencmd get_mem gpu`: Shows the memory split between the CPU and GPU.
 
+`service`:
 
 ### Disk Management Commands
 
@@ -189,72 +192,9 @@ sudo mkfs.vfat /dev/sda1 -n untitled
 `chgrp`: Changes the file group
 
 
-## Moving Files
-
-### [cyberduck](https://cyberduck.io/)
-
-To copy files to/from a device:
-
-* Use the SFTP (SSH protocol)
-* address: 192.168.x.x or 10.1.x.x
-* user: pi
-* pass: raspberry
-
-### sftp
-
-To copy files to/from a device:
-```
-$ sftp pi@ip-address
-Enter password (raspberry)
-```
-
-* Use `put` to transfer a file.
-* Use `put -r` to transfer whole directory to /home/pi/myfolder. Note you need to make the target location on the device before copying files over.
-
-```
-sftp> put -r myfolder
-```
-
-### scp
-
-Open the terminal and use the following commands to move files and folders from place to place.
-
-* `~` or `~/` or `/home/pi` is the root directory
-* `pi` is the default user name
-
-**Local Machine --> Raspberry Pi**
-
-Copy a file from local machine to Raspberry Pi:
-```
-scp file.txt pi@ip-address:~
-```
-
-Copy a folder from local machine to Raspberry Pi:
-```
-scp -r my-folder pi@ip-address:~
-```
-
-**Raspberry Pi --> Local Machine**
-
-Copy a file from Raspberry Pi to local machine:
-```
-sudo scp pi@ip-address:file.txt ~/Desktop/file.txt
-```
-
-Copy a folder from Raspberry Pi to local machine:
-```
-sudo scp -r pi@ip-address:folder ~/Desktop/folder
-```
-
-**Raspberry Pi --> Raspberry Pi**
-
-Copy file from Raspberry Pi 1 (SSH logged into) to Raspberry Pi 2:
-```
-$ scp test.txt pi@ip-address:~
-```
-
 ## References
 
+* [Raspberry Pi Linux Commands](https://www.raspberrypi.org/documentation/linux/usage/commands.md)
 * [42 of the Most Useful Raspberry Pi Commands](http://www.circuitbasics.com/useful-raspberry-pi-commands/)
 * [Cheat Sheet - USB drives (Working with Disks)](https://www.raspberrypi.org/forums/viewtopic.php?t=38429)
 * [Use USB hard disk & flash drives with your Raspberry Pi](https://devtidbits.com/2013/03/21/using-usb-external-hard-disk-flash-drives-with-to-your-raspberry-pi/)
