@@ -13,7 +13,6 @@ _Note: this is a living document and will be updated often.._
     * sftp
     * scp
 * [References](#references)
-<!-- testing -->
 
 ## How to Locate a Device on the Local Network
 
@@ -23,7 +22,7 @@ For example,
 
 On my mac I type `arp -a` and see the following results:
 
-```
+```bash
 ~$ arp -a
 ? (192.168.0.1) at 40:5d:82:37:62:a on en0 ifscope [ethernet]
 ? (192.168.0.12) at 78:31:c1:ba:fd:1c on en0 ifscope permanent [ethernet]
@@ -42,7 +41,7 @@ This list includes devices that are likely not available any longer yet they are
 
 If I make note of the MAC address on the Raspberry PI then I can easily match up the known address with what appears next to the IP address in the list above. For example, typing `ifconfig wlan0` (for wireless connection) or `ifconfig eth0` (for wired connection) on the Raspberry PI (logged into already) will return the following:
 
-```
+```bash
 wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
         inet 192.168.0.18  netmask 255.255.255.0  broadcast 192.168.0.255
         inet6 2601:282:1:a2c0:a7e0:7f71:8fd4:a56b  prefixlen 64  scopeid 0x0<global>
@@ -57,11 +56,11 @@ wlan0: flags=4163<UP,BROADCAST,RUNNING,MULTICAST>  mtu 1500
 I can see my MAC address as `b8:27:eb:c9:d6:2a` next to `ether` in the 5th line down. This matches line 7 from above. In this case I identify the address to be `192.168.0.18`.
 
 Line 5 from `ifconfig wlan0` on Raspberry Pi:
-```
+```bash
 ether b8:27:eb:c9:d6:2a  txqueuelen 1000  (Ethernet)
 ```
 Line 7 from `arp -a` on my mac:
-```
+```bash
 ? (192.168.0.18) at b8:27:eb:c9:d6:2a on en0 ifscope [ethernet]
 ```
 
@@ -77,7 +76,7 @@ To make a backup of an SD card:
 2. Open Terminal
 3. Look at the list of disks using `diskutil list`. Identity the disk that matches your card. You can tell by looking at the size. Make a note of the disk#.
 4. Enter the following command to make a backup using `dd` rdisk. Make sure to enter an output file path that has enough storage space to cover the size of the SD card (ie. If its a 16GB card you need at least 16GB of storage space to save an image to).
-    ```
+    ```bash
     sudo dd bs=1m if=/dev/rdisk# of=~/raspbian.img
     ```
 5. Wait anywhere from 6-10 mins, maybe longer for larger cards, until the process completes. If you want to see the progress you can enter "ctrl + t". It will print out how much data has been copied in Bytes. Use a [Bytes to GB](https://www.google.com/search?q=bytes+to+gb&oq=byte&aqs=chrome.1.69i57j69i59.1614j0j1&sourceid=chrome&ie=UTF-8) conversion tool to see in GB.
@@ -108,7 +107,7 @@ To copy files to/from a device:
 ### sftp
 
 To copy files to/from a device:
-```
+```bash
 $ sftp pi@ip-address
 Enter password (raspberry)
 ```
@@ -116,7 +115,7 @@ Enter password (raspberry)
 * Use `put` to transfer a file.
 * Use `put -r` to transfer whole directory to /home/pi/myfolder. Note you need to make the target location on the device before copying files over.
 
-```
+```bash
 sftp> put -r myfolder
 ```
 
@@ -130,31 +129,31 @@ Open the terminal and use the following commands to move files and folders from 
 **Local Machine --> Raspberry Pi**
 
 Copy a file from local machine to Raspberry Pi:
-```
+```bash
 scp file.txt pi@ip-address:~
 ```
 
 Copy a folder from local machine to Raspberry Pi:
-```
+```bash
 scp -r my-folder pi@ip-address:~
 ```
 
 **Raspberry Pi --> Local Machine**
 
 Copy a file from Raspberry Pi to local machine:
-```
+```bash
 sudo scp pi@ip-address:file.txt ~/Desktop/file.txt
 ```
 
 Copy a folder from Raspberry Pi to local machine:
-```
+```bash
 sudo scp -r pi@ip-address:folder ~/Desktop/folder
 ```
 
 **Raspberry Pi --> Raspberry Pi**
 
 Copy file from Raspberry Pi 1 (SSH logged into) to Raspberry Pi 2:
-```
+```bash
 $ scp test.txt pi@ip-address:~
 ```
 
