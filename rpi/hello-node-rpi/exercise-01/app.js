@@ -2,7 +2,7 @@ var http = require('http');
 var os = require('os');
 http.createServer(function(req, res) {
   res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
+  res.end('Hello Node Rpi!\n');
 }).listen(3000);
 var ip = os.networkInterfaces().wlan0[0].address;
 console.log('Server running on ' + ip + ":3000");
