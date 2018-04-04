@@ -10,8 +10,8 @@ app.set('view engine', 'pug');
 app.get('/', function(req, res) {
   // render the 'index' template and pass in a few variables
   res.render('index', {
-    title: 'Hello World!',
-    message: 'Hello World!'
+    title: 'Hello World',
+    message: 'Hello Friend. You must me. I am just a computer after all.'
   });
 });
 

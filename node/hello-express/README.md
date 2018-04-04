@@ -16,6 +16,7 @@ Insert here...
 ## Exercise-01: Hello Express
 
 1. Create a project and install Express
+
     ````bash
     mkdir exercise-01
     cd exercise-01
@@ -23,7 +24,9 @@ Insert here...
     npm install express --save
     ````
     Remember to set the application entry point to app.js instead of the default index.js.
-2. Add application javascript to app.js
+    
+2. Add application javascript to app.js.
+
     ````javascript
     const express = require('express')
     const app = express()
@@ -32,10 +35,19 @@ Insert here...
 
     app.listen(3000, () => console.log('Example app listening on port 3000!'))
     ````
+
+    The application starts off by requiring the express module then making an app object using it. The app object will be used to call all express functions.
+    
+    Following the require statements is the first call to `app.get()`. The `get` function is used to route HTTP GET requests to a specified path with a specified callback function. Check out the Express documentation on this function [here](https://expressjs.com/en/4x/api.html#app.get).
+     
+    One thing to note in this exercise is the use of "Arrow Functions" in the line: `app.get('/', (req, res) => res.send('Hello World!'))`. In this case, an arrow function is used to define the callback function. This is mostly to reduce the amount of code required to accomplish the same goal of defining the required callback function. To learn more about Arrow Functions check out [this excellent explanation](https://codeburst.io/javascript-arrow-functions-for-beginners-926947fc0cdc) and the [Mozilla JavaScript Documentation](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions).
+
 3. Run the node app
     ````bash
     node app.js
     ````
+
+
 
 References
 
@@ -94,7 +106,7 @@ This exercise is building an Express application from scratch. It uses [express]
       // render the 'index' template and pass in a few variables
       res.render('index', {
         title: 'Hello World!',
-        message: 'Hello World!'
+        message: 'Hello Friend. You must me. I am just a computer after all.'
       });
     });
 
@@ -114,8 +126,8 @@ This exercise is building an Express application from scratch. It uses [express]
       head
         title= title
       body
-        h1= message
-        p This is my node app
+        h1= title
+        p= message
     ````
     This is basically like writing the following html into a vanilla html file.
     ````html
@@ -124,8 +136,8 @@ This exercise is building an Express application from scratch. It uses [express]
           <title>title</title>
       </head>
       <body>
-          <h1>message</h1>
-          <p>This is my node app</p>
+          <h1>title</h1>
+          <p>message</p>
       </body>
     </html>
     ````
@@ -205,7 +217,7 @@ This will display a list of files created in the exercise-03 folder. This is a f
     ````bash
     DEBUG=exercise-03:* npm start
     ````
-Note: You could also just start the app using `npm start`. Specifying the DEBUG variable as shown enables console logging/debugging.
+Note: You could also just start the app using `npm start`. Specifying the DEBUG variable as shown enables console logging/debugging. To learn more about the npm `debug` module [here](https://www.npmjs.com/package/debug).
 
 5. Open the browser and navigate to [http://localhost:3000](http://localhost:3000/). You should see the application running. It will greet you with a nice "Welcome to Express" message.
 
