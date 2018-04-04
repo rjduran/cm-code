@@ -7,7 +7,7 @@ var ip;
 console.log(os.networkInterfaces()); // print out available devices
 // if device en0 exists then use the ip address to start server
 if(os.networkInterfaces().en0) {
-  ip = os.networkInterfaces().en0[1].address;
+  ip = os.networkInterfaces().en0[0].address; // the en0 index will vary 
 } else {
   ip = null;
   console.log('No connection');
