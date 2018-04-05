@@ -1,6 +1,6 @@
 # hello-express
 
-These examples demonstrate how to use the [Express](https://expressjs.com/) framework for building applications. Node.js is required to use Express.
+These exercises provide a learning pathway for understanding the application of [Node.js](https://nodejs.org/en/) and the [Express Framework](https://expressjs.com/) for the development of interactive and connected devices. Node.js is required to use Express.
 
 ## Table of Contents
 
@@ -11,9 +11,11 @@ These examples demonstrate how to use the [Express](https://expressjs.com/) fram
 
 ## What is Express?
 
-Insert here...
+Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications.
 
 ## Exercise-01: Hello Express
+
+This exercise walks through setting up simple Express application.
 
 1. Create a project and install Express
 
@@ -23,17 +25,17 @@ Insert here...
     npm init
     npm install express --save
     ````
-    Remember to set the application entry point to app.js instead of the default index.js.
+    Remember to set the application entry point to `app.js` instead of the default `index.js` during or after creating the package.json file.
     
 2. Add application javascript to app.js.
 
     ````javascript
-    const express = require('express')
-    const app = express()
+    const express = require('express');
+    const app = express();
 
-    app.get('/', (req, res) => res.send('Hello World!'))
+    app.get('/', (req, res) => res.send('Hello World!'));
 
-    app.listen(3000, () => console.log('Example app listening on port 3000!'))
+    app.listen(3000, () => console.log('Example app listening on port 3000!'));
     ````
 
     The application starts off by requiring the express module then making an app object using it. The app object will be used to call all express functions.
@@ -47,9 +49,9 @@ Insert here...
     node app.js
     ````
 
+    Running the application should result in the Terminal prompt sitting in an active state while displaying "Example app listening on port 3000!". The application is running and should be accessible on [http://localhost:3000](http://localhost:3000). Experiment with changing the port to see it appear on a different port. Next, we will go a bit deeper and build a simple application using the templating language `pug`.
 
-
-References
+### References
 
 * [Express.js Install](https://expressjs.com/en/starter/installing.html)
 * [Express.js Hello World](https://expressjs.com/en/starter/hello-world.html)
@@ -91,7 +93,7 @@ This exercise is building an Express application from scratch. It uses [express]
     ````bash
     touch app.js
     ````
-8. Add the following js to app.js to setup the application server.
+8. Add the following code to app.js to setup the application server.
     ````javascript
     // require all dependencies
     var express = require('express');
@@ -164,7 +166,7 @@ This exercise is building an Express application from scratch. It uses [express]
     ````
 Next, we will build a project using the generator and inspect the file structure. After that we will begin to add additional functionality.
   
-References
+### References
 
 * [nodemon](https://nodemon.io/)
 * [pug](https://www.npmjs.com/package/pug)
@@ -251,54 +253,52 @@ Note: You could also just start the app using `npm start`. Specifying the DEBUG 
           li Green
           li Blue
     ````
-As we saw in exercise-02, this is rendering out as html. You can see this same HTML in the browser using the dev tools.     
-````html
-<div id="content">
-  <h1>Express</h1>
-  <p>Welcome to Express</p>
-  <p>Fruit</p>
-  <ul class="fruit">
-    <li>Apples</li>
-    <li>Bananas</li>
-    <li>Oranges</li>
-  </ul>
-  <p>Color</p>
-  <ul class="color">
-    <li>Red</li>
-    <li>Green</li>
-    <li>Blue</li>
-  </ul>      
-</div>
-````             
+    
+    As we saw in exercise-02, this is rendering out as html. You can see this same HTML in the browser using the dev tools.     
+
+    ````html
+    <div id="content">
+      <h1>Express</h1>
+      <p>Welcome to Express</p>
+      <p>Fruit</p>
+      <ul class="fruit">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Oranges</li>
+      </ul>
+      <p>Color</p>
+      <ul class="color">
+        <li>Red</li>
+        <li>Green</li>
+        <li>Blue</li>
+      </ul>      
+    </div>
+    ````             
 
 8. Now add a few more lines to the index.pug file just under the last ul. What does this addition do in the browser?
-````jade
-....
-    p Search
-    ul.search
-      li
-        a(href='https://google.com') Google
-      li
-        a(href='https://bing.com/') Bing
-      li
-        a(href='https://duckduckgo.com/', target='_blank') DuckDuckGo
-````
-If you inspect the HTML in the browser you will see additional HTML added. Are you starting to see how pug works? I suggest watching a few tutorial videos on the pug syntax to understand how more elements translate to HTML. Here's a good [Getting Started with Pug](https://www.youtube.com/watch?v=leilVbK0xQc) Tutorial.
-````html
-<p>Search</p>
-<ul class="search">
-  <li><a href="https://google.com">Google</a></li>
-  <li><a href="https://bing.com/">Bing</a></li>
-  <li><a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a></li>
-</ul>
-````
 
---
-
-Whats next?
-
-Stay tuned for more examples of using Express with other frameworks and libraries to build functional applications. This framework could be used in combination with client-side libraries such as P5.js, D3.js, Three.js, A-Frame, and many others.
-
+    ````jade
+    ....
+        p Search
+        ul.search
+          li
+            a(href='https://google.com') Google
+          li
+            a(href='https://bing.com/') Bing
+          li
+            a(href='https://duckduckgo.com/', target='_blank') DuckDuckGo
+    ````
+    
+    If you inspect the HTML in the browser you will see additional HTML added. Are you starting to see how pug works? I suggest watching a few tutorial videos on the pug syntax to understand how more elements translate to HTML. Here's a good [Getting Started with Pug](https://www.youtube.com/watch?v=leilVbK0xQc) Tutorial.
+    
+    ````html
+    <p>Search</p>
+    <ul class="search">
+      <li><a href="https://google.com">Google</a></li>
+      <li><a href="https://bing.com/">Bing</a></li>
+      <li><a href="https://duckduckgo.com/" target="_blank">DuckDuckGo</a></li>
+    </ul>
+    ````
         
 ## References
 
