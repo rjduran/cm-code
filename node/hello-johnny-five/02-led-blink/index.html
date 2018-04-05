@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello-johnny-five</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <style>
+      .form-control {
+        width: 200px;
+      }
+      .inl-bl {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      
+      <h4>LED On/Off</h4>
+      <button id="led-on" class="btn btn-default" type="submit">LED On</button>
+      <button id="led-off" class="btn btn-default" type="submit">LED Off</button>
+    
+    </div>
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+            
+      $('#led-on').click(function() {
+        console.log('led on');
+        socket.emit('led on', {state:true});
+      });
+      $('#led-off').click(function() {
+        console.log('led off');
+        socket.emit('led off', {state:false});
+      });
+              
+    </script>
+  </body>
+</html>

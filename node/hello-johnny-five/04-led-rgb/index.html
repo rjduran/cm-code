@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello-johnny-five</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css">
+    <style>
+      .inl-bl {
+        display: inline-block;
+      }
+    </style>
+        
+  </head>
+  <body>
+    <div class="container">
+                  
+      <h4>Color Picker (RGB LED)</h4>
+      <div id="my-colorpicker" class="inl-bl"></div>
+                        
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+      
+      //Colorpicker
+      $("#my-colorpicker").colorpicker({
+            color: "#000000",
+            container: true,
+            inline: true,
+            colorSelectors: {
+                'red': '#FF0000',
+                'orange': '#FF7F00',
+                'yellow': '#FFFF00',
+                'green': '#00FF00',
+                'blue': '#0000FF',
+                'purple': '#8F00FF',
+                'white': '#FFFFFF',
+                'black': '#000000'
+            }
+        }).on('changeColor', function(e) {
+        console.log(e.color.toHex());
+        socket.emit('rgb led on', {color:e.color.toHex()});
+      });
+                                
+    </script>
+  </body>
+</html>

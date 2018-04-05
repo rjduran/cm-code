@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello-johnny-five</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css">
+    <style>
+      .form-control {
+        width: 200px;
+      }
+      .inl-bl {
+        display: inline-block;
+      }
+    </style>
+        
+  </head>
+  <body>
+    <div class="container">
+      
+      <h4>LED On/Off</h4>
+      <button id="led-on" class="btn btn-default" type="submit">LED On</button>
+      <button id="led-off" class="btn btn-default" type="submit">LED Off</button>
+
+      <h4>LED Pulse Delay (ms)</h4>
+      <input type="text" class="form-control" id="delay" value="500">
+      <button id="led-strobe-on" class="btn btn-default" type="submit" >Set Delay</button>
+      <button id="led-strobe-off" class="btn btn-default" type="submit">LED Strobe Off</button>
+                        
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+                                      
+      $('#led-on').click(function() {
+        console.log('led on');
+        socket.emit('led on', {state:true});
+      });
+      $('#led-off').click(function() {
+        console.log('led off');
+        socket.emit('led off', {state:false});
+      });
+            
+      $('#led-strobe-on').click(function() {
+        var tmp = parseInt($('#delay').val(), 10);
+        console.log("Setting LED Delay: ", tmp);
+        socket.emit('led strobe on', {delay:tmp});
+      });
+      
+      $('#led-strobe-off').click(function() {
+        console.log('led strobe off');
+        socket.emit('led strobe off', {state:true});
+      });
+            
+    </script>
+  </body>
+</html>
