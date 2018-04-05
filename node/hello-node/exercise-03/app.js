@@ -1,34 +1,35 @@
-// Based on Example: TinyCLI at https://nodejs.org/api/readline.html#readline_example_tiny_cli
-const readline = require('readline');
-const rl = readline.createInterface({
-  input: process.stdin,
-  output: process.stdout,
-  prompt: 'OHAI> '
-});
+// HTTP module
+var http = require('http');
 
-rl.prompt();
+// Filesystem module
+var fs = require('fs');
 
-rl.on('line', (line) => {
-  switch (line.trim()) {
-    case 'hello':
-      console.log('Well hello there friend! Good to see you today.');
-      break;
-    case 'hola':
-      console.log('Hola! que bueno verte');
-      break;
-    case 'bonjour':
-      console.log('Bonjour! content de te voir.');
-      break;
-    case 'bye':
-      console.log('Have a great day!');
-      process.exit(0);
-      break;
-    default:
-      console.log(`Say what? I don't understand '${line.trim()}'. I'm just a simple computer.`);
-      break;
-  }
-  rl.prompt();
-}).on('close', () => {
-  console.log('Have a great day!');
-  process.exit(0);
-});
+// This function handles an incoming "request"
+// and sends back out a "response"
+function handleRequest(request, response) {
+  
+  // Use the file system module to read an index.html file
+  fs.readFile(__dirname + '/index.html',
+    // Call back for reading the file
+    function(err, data) {
+      // if there is an error
+      if(err){
+        response.writeHead(500);
+        return response.end('Error loading index.html');
+      }
+      // Otherwise, send the data (contents of the file)
+      response.writeHead(200);
+      response.end(data);
+    }
+  );
+    
+};
+
+// Create a server with the handleRequest callback (function)
+var server = http.createServer(handleRequest);
+
+// Listen on port 3000
+server.listen(3000, '127.0.0.1');
+
+// Print out to console
+console.log('Server running at http://127.0.0.1:3000');

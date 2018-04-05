@@ -1,23 +1,30 @@
 var http = require('http');
-var os = require('os');
-var port = 3000;
-var ip;
+var url = require('url');
 
-// Choose network device
-console.log(os.networkInterfaces()); // print out available devices
-// if device en0 exists then use the ip address to start server
-if(os.networkInterfaces().en0) {
-  ip = os.networkInterfaces().en0[0].address; // the en0 index will vary 
-} else {
-  ip = null;
-  console.log('No connection');
-  process.exit();
-}
+// This function handles an incoming "request"
+// and sends back out a "response"
+var handleRequest = function(request, response) {
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+  // Get the path from the request's URL
+  var pathname = url.parse(request.url).pathname;
+  
+  // Test if it's equal to 'one' or 'two' or 'three' and respond accordingly
+  if(pathname == '/one') {
+    response.end('One!\n');
+  } else if( pathname == '/two') {
+    response.end('Two!\n');
+  } else if( pathname == '/three') {
+    response.end('Three!\n');
+  } else {
+    response.end('Hello World\n');
+  }
+};
 
-http.createServer(function(req, res) {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello Node!\n');
-}).listen(port, ip);
-console.log('Server running on en0 at ' + ip + ":" + port);
+// Create a server with the handleRequest callback (function)
+var server = http.createServer(handleRequest);
 
+// Listen on port 3000
+server.listen(3000, '127.0.0.1');
 
+// Print out to console
+console.log('Server running at http://127.0.0.1:3000');
