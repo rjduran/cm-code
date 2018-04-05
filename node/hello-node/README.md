@@ -83,11 +83,11 @@ console.log(os.networkInterfaces());
 
 The result will consists of an object that has key/value pairs with the values being arrays filled with objects. For example, you will see something similar to this object with an address, netmask, family, mac, and internal key/value pairs. All we need is the address value as the IP address. But how do we get it and use it?
 ```
-{ address: '127.0.0.1',
-  netmask: '255.0.0.0',
+{ address: '192.168.0.21',
+  netmask: '255.255.255.0',
   family: 'IPv4',
   mac: '00:00:00:00:00:00',
-  internal: true },
+  internal: false }
 ```
 
  In a simple way we will first check if the en# device exists, then get the ip address, and then use it to create the server.
