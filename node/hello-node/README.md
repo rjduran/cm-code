@@ -44,8 +44,68 @@ Make a basic server and start it using the localhost of the device.
 
 ## Exercise-02: Working with Paths
 
-This exercise goes over how to route incoming requests and respond based on the request.
+This exercise goes over how to route incoming requests and respond based on the path.
 
+To request files from a server, a client must specify a path or "route" such as "/" or "/one". In the browser this looks like http://localhost:3000/ or http://localhost:3000/one.
+
+To set this up first require the `http` and `url` modules. The `url` module is optional in this case and is used to parse the incoming path to get the `pathname`. Check out the Node docs on on [URL](https://nodejs.org/docs/latest/api/url.html) to learn more about how this module works.
+```javascript
+var http = require('http');
+var url = require('url'); // optional
+```
+
+After defining the modules needed, we create the handleRequest function to be used to handle all requests and responses for the server just as in the previous exercise.
+
+```javascript
+var handleRequest = function(request, response) {
+  response.writeHead(200, {'Content-Type': 'text/plain'});
+  // Option 1: Get the pathname from the request's URL
+  //var pathname = url.parse(request.url).pathname;
+  console.log(url.parse(request.url)); // print out the parsed url to learn more about the object.
+  
+  // Option 2: Just use the request's URL
+  var pathname = request.url;    
+  
+  //console.log(pathname);
+  
+  // Test if it's equal to 'one' or 'two' or 'three' and respond accordingly
+  if(pathname == '/one') {
+    response.end('One!\n');
+  } else if( pathname == '/two') {
+    response.end('Two!\n');
+  } else if( pathname == '/three') {
+    response.end('Three!\n');
+  } else {
+    response.end('Hello World\n');
+  }
+};
+```
+
+Create the server and start it.
+
+```javascript
+// Create a server with the handleRequest callback (function)
+var server = http.createServer(handleRequest);
+
+// Listen on port 3000
+server.listen(3000, '127.0.0.1');
+
+// Print out to console
+console.log('Server running at http://127.0.0.1:3000');
+```
+
+Start server
+
+```bash
+node app.js
+```
+
+You should see the correct response when navigating to the different URL's.
+
+* [http://localhost:3000](http://localhost:3000)
+* [http://localhost:3000/one](http://localhost:3000/one)
+* [http://localhost:3000/two](http://localhost:3000/two)
+* [http://localhost:3000/three](http://localhost:3000/three)
 
 ## Exercise-03: Loading Files
 
@@ -138,3 +198,4 @@ This checks for available devices and prompts the user which ethernet (eth) devi
 * [Get local IP address in node.js](https://stackoverflow.com/questions/3653065/get-local-ip-address-in-node-js)
 * [How to Exit in Node.js](http://stackabuse.com/how-to-exit-in-node-js/)
 * [Requiring modules in Node.js: Everything you need to know](https://medium.freecodecamp.org/requiring-modules-in-node-js-everything-you-need-to-know-e7fbd119be8)
+* [CSE 398: Node.js Tutorial](http://www.cse.lehigh.edu/~spear/cse398/tutorials/nodejs.html)
