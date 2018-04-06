@@ -17,3 +17,10 @@ Coming soon. -->
 npm install
 node app.js
 ```
+Or use `nodemon` to auto-reload the application when things change.
+
+```bash
+nodemon app.js
+```
+
+

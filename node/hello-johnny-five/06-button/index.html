@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>hello-johnny-five</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap-colorpicker.min.css">
+    <style>
+      .form-control {
+        width: 200px;
+      }
+      
+      .button-on {
+        background-color: #0000FF;
+      }
+      .button-off {
+        background-color: #000000;
+      }
+    
+    </style>
+        
+  </head>
+  <body>
+    <div class="container">
+      
+      <h4>Buttons</h4>
+      <!-- blue button on / off / hold -->
+      <span id="blue-button" class="label button-off">Blue</span>
+                                    
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+            
+      // receive message from server to display
+      socket.on('blue button press', function(data) {
+        $('#blue-button').removeClass('button-off').addClass('button-on'); // update button color
+      });
+      socket.on('blue button release', function(data) {
+        $('#blue-button').removeClass('button-on').addClass('button-off'); // update button color
+      });
+                  
+    </script>
+  </body>
+</html>

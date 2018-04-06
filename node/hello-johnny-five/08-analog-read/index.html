@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO chat</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+        
+  </head>
+  <body>
+    <div class="container">
+              
+      <h4>From Analog 0</h4>
+      <textarea class="form-control" style="background:#222; color:#00ff00;" rows="8" id="inData"></textarea>
+                        
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/bootstrap-colorpicker.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+            
+      socket.on('sensor', function (data) {
+        //console.log("Incoming sensor data:",data.raw);
+        $("#inData").append(data.raw+"\r");
+        $("#inData").animate({scrollTop:$("#inData")[0].scrollHeight - $("#inData").height(), easing:'linear'},50);
+      });
+      
+    </script>
+  </body>
+</html>
