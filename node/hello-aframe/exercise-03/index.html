@@ -1,0 +1,85 @@
+<html>
+  <head>
+    <script src="https://aframe.io/releases/0.8.0/aframe.min.js"></script>
+    <!-- <script src="js/aframe.min.js"></script> -->
+    <script src="https://unpkg.com/aframe-animation-component@4.1.1/dist/aframe-animation-component.min.js"></script>
+    
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+  </head>
+  <body>
+    <a-scene>
+      <!-- setup a default camera so objects can be positioned at 0,0,0 in the world -->
+      <a-entity camera="active: true" look-controls wasd-controls position="0 1.6 4" data-aframe-default-camera></a-entity>
+      
+      <!-- define entities -->
+      <a-box id="rotatingBox" position="-1 0.5 1" color="#4CC3D9">
+        <a-animation attribute="rotation"></a-animation>
+      </a-box>
+      <a-sphere id="animatedSphere" position="0 1.25 -1" radius="1.25" color="#EF2D5E">
+        <a-animation attribute="scale"></a-animation>
+      </a-sphere>
+      <a-cylinder id="animatedCylinder" position="1 0.75 1" radius="0.5" height="1.5" color="#FFC65D">
+        <a-animation attribute="color"></a-animation>
+      </a-cylinder>
+      <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4"></a-plane>
+      <a-sky color="#ECECEC"></a-sky>
+
+    </a-scene>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+            
+      // receive data from the server
+      socket.on('rotate', function (data) {
+        //console.log("Incoming data:", data);
+        
+        // build rotation attribute string
+        var str = data.x + " " + data.y + " " + data.z;
+        
+        // set color attribute
+        $("#rotatingBox").attr({
+          color: "#FF0000"
+        });
+                
+        // set animation attributes
+        $("#rotatingBox a-animation").attr({
+          direction: "normal",
+          dur: "2000",
+          from: "0 0 0",
+          to: str,
+          repeat: "indefinite"
+        });
+      });
+      
+      socket.on('animate-cylinder', function (data) {
+        //console.log("animate-cylinder: ", data);
+        
+        $("#animatedCylinder a-animation").attr({
+          direction: "alternate",
+          dur: "4000",
+          from: "#FFC65D",
+          to: data.color, // use randomly generate HEX value
+          repeat: "indefinite"
+        });
+      });
+      
+      socket.on('animate-sphere', function (data) {
+        //console.log("animate-sphere: ", data);
+        
+        var str = data.x + " " + data.y + " " + data.z;
+        
+        $("#animatedSphere a-animation").attr({
+          direction: "alternate",
+          dur: "1000",
+          from: "1 1 1",
+          to: str,
+          easing: "ease", //linear, ease, ease-in, ease-out, ease-in-out
+          repeat: "indefinite"
+        });
+      });
+    
+    </script>
+  </body>
+</html>

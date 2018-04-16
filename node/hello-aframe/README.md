@@ -33,5 +33,12 @@ Make a basic server and start it using the localhost of the device. This exercis
 
 Make a basic server and include websockets. Using websockets we can send data back and forth between the server and client. In this case, we are sending data from the server to the client to automate object rotation for a given time period.
 
+## Exercise-03: Animated Scene
+
+Make a basic server that animates the objects in a scene using data sent from the server.
+
+
+
+
 
 
