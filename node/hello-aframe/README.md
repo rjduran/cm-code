@@ -8,6 +8,7 @@ These exercises provide a learning pathway for understanding how to use [A-Frame
 * [How to Run an Application](#how-to-run-an-application)
 * [Exercise-01: Hello A-Frame](#exercise-01-hello-a-frame)
 * [Exercise-02: A-Frame Websockets](#exercise-02-a-frame-websockets)
+* [Exercise-03: Animated Scene](#exercise-03-animated-scene)
 
 ## What is A-Frame?
 
