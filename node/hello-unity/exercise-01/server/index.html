@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <title>Socket.IO Client</title>
+  </head>
+  <body>
+    <h1>Messages</h1>
+    <ul id="messages"></ul>
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+      
+      socket.on('message', function(data){
+        $('#messages').append($('<li>').text(data.hello));
+      });
+      
+      // handle keypress to send message to server
+      $(document).keydown(function(event){
+        // send the key pressed
+        socket.emit('browser', {hello: event.key});
+      });
+            
+    </script>
+  </body>
+</html>
