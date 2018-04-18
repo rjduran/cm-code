@@ -6,7 +6,7 @@ These exercises provide a learning pathway for understanding how to use [Node.js
 
 * [What is Unity?](#what-is-unity)
 * [What is Socket.io?](#what-is-socketio)
-* [Exercise-01: Hello Unity + Socket.io](#exercise-01-hello-unity-socketio)
+* [Exercise-01: Hello Unity + Socket.io](#exercise-01-hello-unity--socketio)
 * [References](#references)
 
 ## What is Unity?
