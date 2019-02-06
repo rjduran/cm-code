@@ -117,6 +117,8 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     * Default Password: _raspberry_
     
     At this point your device is ready to be configured. Congratulations!
+
+    **The next step requires hooking up the Raspberry Pi to a display, keyboard, and mouse to access it. Alternatively, you can continue setting up the device to automatically connect to Wifi and enable SSH to access via Terminal. The remaining steps can be done in a "headless" setup. Follow this tutorial: [How to Access Device Without Monitor or Keyboard](https://github.com/rjduran/cm-code/blob/master/rpi/HOW-TO.md#how-to-access-device-without-monitor-or-keyboard) to configure the device this way.**
   
 2. Configure System (localization, timezone, keyboard, enable SSH, etc)
   

@@ -7,6 +7,7 @@ _Note: this is a living document and will be updated often.._
 ## Table of Contents
 
 * [How to Locate a Device on the Local Network](#how-to-locate-a-device-on-the-local-network)
+* [How to Access Device Without Monitor or Keyboard](#how-to-access-device-without-monitor-or-keyboard)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
 * [How to Move Files](#how-to-move-files)
     * Cyberduck
@@ -63,6 +64,58 @@ Line 7 from `arp -a` on my mac:
 ```bash
 ? (192.168.0.18) at b8:27:eb:c9:d6:2a on en0 ifscope [ethernet]
 ```
+
+## How to Access Device Without Monitor or Keyboard
+
+1. After flashing a new card insert the card into your computer and open Terminal. 
+
+    Make a new file called **wpa_supplicant.conf** and enter the following text, replacing _wifirouter_ and _wifipassword_ with the correct information. 
+
+    ```bash
+    touch wpa_supplicant.conf
+    ```
+
+    ```
+    country=US
+    update_config=1
+    ctrl_interface=DIR=/var/run/wpa_supplicant GROUP=netdev
+
+    network={
+        ssid="wifirouter"
+        psk="wifipassword"
+    }
+    ```
+
+2. Make another file to enable ssh.
+
+    ```bash
+    touch ssh
+    ```
+
+    This will enable the ssh interface upon bootup, giving you access to the device via Terminal. Once you log in you can access the configuration for the device. 
+
+3. Insert card into device and bootup to access via ssh. 
+
+    To find the ip address you can access your router connected devices table. You may also be able to use the `arp -a` command in the Terminal if you have arp installed and don't have too many devices on the network. Refer back to [How to Locate a Device on the Local Network](#how-to-locate-a-device-on-the-local-network) for more information.
+
+    ```bash
+    ssh pi@<ipaddress>
+    ```
+
+    login: pi<br>
+    password: raspberry
+
+4. Enable VNC to be able to access the desktop environment.
+
+    ```bash
+    sudo raspi-config
+    ```
+
+    * Then select “Interfacing Options” from the menu:
+    * Then select “VNC”, to enable VNC:
+    * Now reboot the Pi with sudo reboot.
+
+5. Install [RealVNC Viewer](https://www.realvnc.com/en/connect/download/viewer/) and access the PI desktop. Connect with IP address and credentials.
 
 ## How to Backup SD Cards
 
