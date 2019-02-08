@@ -4,7 +4,7 @@ This guide walks through the process of setting up a Raspberry Pi and installing
 
 _Note: this is a living document and will be updated often. In time this document will contain additional setup options for different devices, recommended packages, and steps to setup a system for prototyping with additional hardware._
 
-At the time of this writing **Raspbian Stretch** and **Node v8.10.0** are the latest versions.
+At the time of this writing **Raspbian Stretch (Version: November 2018. 2018-11-13. Kernel: 4.14)** and **Node LTS 10.15.1 (includes npm 6.4.1)** are the latest versions.
 
 ## Table of Contents
 
@@ -218,10 +218,6 @@ Node.js will run on various Raspberry Pi editions as long as there is a binary f
 
 To install, locate an ARM version that will work from [Node.js Downloads](https://nodejs.org/en/download/). Look for the Linux Binaries (ARM) and right click on ARMv6 or ARMv7 to copy the link address. You will need the URL in the next command. I have listed out the commands needed to install node for convenience.
 
-<!-- 
-**As an alternative to installing manually or if you plan on using multiple versions of node on the device, you can install the [Node Version Manager (NVM)](https://github.com/creationix/nvm) and install node using the utility. Look at the section on installing different versions such as the latest [Long-Term Support](https://github.com/creationix/nvm#long-term-support).** 
--->
-
 Commands Used
 
 * `wget` - This downloads the file from the URL specified
@@ -231,25 +227,17 @@ Commands Used
 **Raspberry Pi 3**
 
 ```bash
-wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv7l.tar.xz
-tar -xvf node-v8.10.0-linux-armv7l.tar.xz
-cd node-v8.10.0-linux-armv7l
+wget https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-armv7l.tar.xz
+tar -xvf node-v10.15.1-linux-armv7l.tar.xz
+cd node-v10.15.1-linux-armv7l
 ```
 
-**Raspberry Pi Zero W**
+**Raspberry Pi Zero / Zero W**
 
 ```bash
-wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv6l.tar.xz
-tar node-v8.10.0-linux-armv6l.tar.xz
-cd node-v8.10.0-linux-armv6l
-```
-
-**Raspberry Pi Zero**
-
-```bash
-wget https://nodejs.org/dist/v8.10.0/node-v8.10.0-linux-armv6l.tar.xz
-tar node-v8.10.0-linux-armv6l.tar.xz
-cd node-v8.10.0-linux-armv6l
+wget https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-armv6l.tar.xz
+tar -xvf node-v10.15.1-linux-armv6l.tar.xz
+cd node-v10.15.1-linux-armv6l
 ```
 
 Install Node:
