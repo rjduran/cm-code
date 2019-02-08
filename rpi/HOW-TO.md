@@ -6,6 +6,7 @@ _Note: this is a living document and will be updated often.._
 
 ## Table of Contents
 
+* [How to Check Which Version of Raspbian is Installed](#how-to-check-which-version-of-rasbian-is-installed)
 * [How to Locate a Device on the Local Network](#how-to-locate-a-device-on-the-local-network)
 * [How to Access Device Without Monitor or Keyboard](#how-to-access-device-without-monitor-or-keyboard)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
@@ -14,6 +15,33 @@ _Note: this is a living document and will be updated often.._
     * sftp
     * scp
 * [References](#references)
+
+<!-- 
+* [How to Reset Device Password](#how-to-reset-device-password) 
+-->
+
+## How to Check Which Version of Raspbian is Installed
+
+```bash
+pi@raspberrypi:~ $ lsb_release -a
+No LSB modules are available.
+Distributor ID:	Raspbian
+Description:	Raspbian GNU/Linux 9.1 (stretch)
+Release:	9.1
+Codename:	stretch
+```
+As you can see from the above, you get the full version (major and minor release numbers – 9.4) plus the distributor ID (Raspbian) and the current major release codename: stretch (this codename is usually specified in /etc/apt/sources.list file to be used by the apt tool).
+
+If you are looking for the Linux kernel information, just use `uname -a`:
+
+```bash
+pi@raspberrypi:~ $ uname -a
+Linux raspberrypi 4.9.41+ #1023 Tue Aug 8 15:47:12 BST 2017 armv6l GNU/Linux
+```
+
+<!-- ## How to Reset Device Password
+
+aaa -->
 
 ## How to Locate a Device on the Local Network
 
@@ -67,11 +95,12 @@ Line 7 from `arp -a` on my mac:
 
 ## How to Access Device Without Monitor or Keyboard
 
-1. After flashing a new card insert the card into your computer and open Terminal. 
+1. After flashing a new card insert the card into your computer SD card slot and open Terminal. 
 
-    Make a new file called **wpa_supplicant.conf** and enter the following text, replacing _wifirouter_ and _wifipassword_ with the correct information. 
+    Navigate to the boot volume and make a new file called **wpa_supplicant.conf** and enter the following text, replacing _wifirouter_ and _wifipassword_ with the correct information. Upon bootup the Raspberry Pi will take this file and move it to /etc/wpa_supplicant.
 
     ```bash
+    cd /Volumes/boot
     touch wpa_supplicant.conf
     ```
 
@@ -86,13 +115,17 @@ Line 7 from `arp -a` on my mac:
     }
     ```
 
-2. Make another file to enable ssh.
+2. Make another file to enable ssh. This will enable the ssh interface upon bootup, giving you access to the device via Terminal. Once you log in you can access the configuration for the device. 
 
     ```bash
     touch ssh
     ```
 
-    This will enable the ssh interface upon bootup, giving you access to the device via Terminal. Once you log in you can access the configuration for the device. 
+    Umnount the disk from the command line using `diskutil` or in the Finder.
+
+    ```bash
+    diskutil unmount /Volumes/boot/
+    ```
 
 3. Insert card into device and bootup to access via ssh. 
 
@@ -105,11 +138,15 @@ Line 7 from `arp -a` on my mac:
     login: pi<br>
     password: raspberry
 
+    This will log you into the Raspberry Pi device after accepting the connection (yes). You should see a empty command line with **pi@raspberry**.
+
 4. Enable VNC to be able to access the desktop environment.
 
     ```bash
     sudo raspi-config
     ```
+
+    Using the arrows, do the following:
 
     * Then select “Interfacing Options” from the menu:
     * Then select “VNC”, to enable VNC:
@@ -212,3 +249,10 @@ $ scp test.txt pi@ip-address:~
 
 ## References
 * [Raspberry Pi Commands](https://github.com/rjduran/cm-code/blob/master/rpi/COMMANDS.md)
+* [How to setup wifi on your raspberry pi without ethernet](https://howchoo.com/g/ndy1zte2yjn/how-to-set-up-wifi-on-your-raspberry-pi-without-ethernet)
+* [How to enable ssh on raspbian without a screen](https://howchoo.com/g/ote0ywmzywj/how-to-enable-ssh-on-raspbian-without-a-screen)
+* [How to log into a raspberry pi via ssh](https://howchoo.com/g/mgi3mdnlnjq/how-to-log-in-to-a-raspberry-pi-via-ssh)
+* [Access raspberry pi desktop remote connection](http://www.circuitbasics.com/access-raspberry-pi-desktop-remote-connection/)
+* [Reset lost password for raspberry pi](http://mapledyne.com/ideas/2015/8/4/reset-lost-admin-password-for-raspberry-pi)
+* [Check Rasbian Version](https://www.unixtutorial.org/check-raspbian-version/)
+* [Mount & Unmount Drives from the Command Line in Mac OS X](http://osxdaily.com/2013/05/13/mount-unmount-drives-from-the-command-line-in-mac-os-x/)
