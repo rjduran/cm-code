@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>websockets</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">    
+  </head>
+  <body>
+
+    <main role="main" class="flex-shrink-0">
+      <div class="container">
+        <h1 class="mt-5">Websockets</h1>
+        <p class="lead">This example demonstrates how to send and receive data from a node.js server.</p>
+        <ul>
+          <li>Client to Server: Click the button to send a message to the server and print out to the console. </li>
+          <li>Server to Client: Every 2 seconds a random number will be sent from the server to the client and shown in the document.</li>
+        </ul>
+        <button id="to-server" class="btn btn-primary" type="submit">Send Message to Server</button>
+        <br><br>
+        <p>Message from the server: <strong><span id="from-server">message</span></strong></p>
+      </div>
+    </main>
+    
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    
+    <script>
+      var socket = io();
+      
+      // send message to server to use
+      $('#to-server').click(function() {
+        console.log('send message to server');
+        socket.emit('from client', { message: 'hello world' }); // this msg will show up in the terminal console
+        
+      });
+        
+      // receive message from server to display
+      socket.on('from server', function(data) {        
+        console.log(data);
+        $('#from-server').text(data.message); // update text in span element
+        // this message will show up in the browser console and document as text
+      });
+              
+    </script>
+  </body>
+</html>
