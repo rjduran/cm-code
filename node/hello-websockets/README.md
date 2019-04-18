@@ -5,7 +5,7 @@ These exercises provide a learning pathway for understanding how to use Websocke
 To run:
 
 ```
-npm i
 cd project-folder
+npm i
 node app.js
 ```
