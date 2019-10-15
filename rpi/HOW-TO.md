@@ -6,14 +6,16 @@ _Note: this is a living document and will be updated often.._
 
 ## Table of Contents
 
-* [How to Check Which Version of Raspbian is Installed](#how-to-check-which-version-of-rasbian-is-installed)
+* [Table of Contents](#table-of-contents)
+* [How to Check Which Version of Raspbian is Installed](#how-to-check-which-version-of-raspbian-is-installed)
 * [How to Locate a Device on the Local Network](#how-to-locate-a-device-on-the-local-network)
 * [How to Access Device Without Monitor or Keyboard](#how-to-access-device-without-monitor-or-keyboard)
 * [How to Backup SD Cards](#how-to-backup-sd-cards)
 * [How to Move Files](#how-to-move-files)
-    * Cyberduck
-    * sftp
-    * scp
+  * [cyberduck](#cyberduck)
+  * [sftp](#sftp)
+  * [scp](#scp)
+* [SSH Troubleshooting](#ssh-troubleshooting)
 * [References](#references)
 
 <!-- 
@@ -246,6 +248,47 @@ Copy file from Raspberry Pi 1 (SSH logged into) to Raspberry Pi 2:
 ```bash
 $ scp test.txt pi@ip-address:~
 ```
+
+## SSH Troubleshooting
+
+
+**I can't log into a device in Terminal**
+
+When you ssh into a device in the Terminal you might encounter a message like this. 
+
+```bash
+$ ssh pi@192.168.0.28
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+IT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!
+Someone could be eavesdropping on you right now (man-in-the-middle attack)!
+It is also possible that a host key has just been changed.
+The fingerprint for the ECDSA key sent by the remote host is
+SHA256:L/E25Bk4Xnr36HRqCnzUoccDhePkDWqCT6Gq/yd1Xpg.
+Please contact your system administrator.
+Add correct host key in /Users/rjduran/.ssh/known_hosts to get rid of this message.
+Offending ECDSA key in /Users/rjduran/.ssh/known_hosts:32
+ECDSA host key for 192.168.0.28 has changed and you have requested strict checking.
+Host key verification failed.
+```
+The issue here is you have a previously stored ssh host key in the file `~/.ssh/known_hosts` that is using the same IP address you are attempting to establish a secure connection with. This can happen when accessing many devices over time on the same local network since the DHCP of a standard router will assign any IP address to any new device. To fix this you need to remove the entry with the associated IP address in the .ssh/known_hosts file.
+
+In the terminal, type `vi ~/.ssh_known_hosts` to enter the VI text editor with the known_hosts file open. 
+
+Next, type `/192.168.0.28` in command mode within VI and press Enter to search for this line in the text file. Press `dd` to delete the line once located. 
+
+Write (save) the file and exit VI by entering `:w` + Enter followed by `:q` + Enter.
+
+Try to connect via SSH again and it should promot you asking to store the new host key in this file by entering `yes` or `no`. Enter `yes` and login/password to complete. 
+
+```bash
+The authenticity of host '192.168.0.28 (192.168.0.28)' can't be established.
+ECDSA key fingerprint is SHA256:L/E25Bk4Xnr36HRqCnzUoccDhePkDWqCT6Gq/yd1Xpg.
+Are you sure you want to continue connecting (yes/no)? 
+```
+
+Now you should be in the device shell. 
 
 ## References
 * [Raspberry Pi Commands](https://github.com/rjduran/cm-code/blob/master/rpi/COMMANDS.md)
