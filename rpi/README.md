@@ -16,6 +16,7 @@ At the time of this writing **Raspbian Buster Lite (Version: September 2019. 201
 * [Device Setup](#device-setup)
 * [Node.js](#nodejs)
   * [How to Install Node.js](#how-to-install-nodejs)
+  * [How to Install NVM](#how-to-install-nvm)
   * [How to Uninstall Node.js](#how-to-uninstall-nodejs)
 * [Install Git](#install-git)
 * [References](#references)
@@ -253,6 +254,23 @@ npm -v
 ```
 
 At this point you have node and npm installed. Possible next steps, install git, install npm modules, hook up hardware peripherals, etc. The sky is the limit.
+
+### How to Install NVM
+
+If you would like to have the ability to install different versions of Node.js you can use Node Version Manager (NVM) to accomplish this. 
+
+The latest information can be found at https://github.com/nvm-sh/nvm. The basic install script takes care of it all. After installing you close out the ssh connection and reconnect to install any version of Node.js you want. 
+
+```bash
+wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.0/install.sh | bash
+
+# close the ssh connection and reconnect then continue
+
+nvm list
+nvm install --lts
+```
+
+
 
 ### How to Uninstall Node.js
 
