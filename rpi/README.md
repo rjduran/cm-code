@@ -4,12 +4,13 @@ This guide walks through the process of setting up a Raspberry Pi and installing
 
 _Note: this is a living document and will be updated often. In time this document will contain additional setup options for different devices, recommended packages, and steps to setup a system for prototyping with additional hardware._
 
-At the time of this writing **Raspbian Stretch (Version: November 2018. 2018-11-13. Kernel: 4.14)** and **Node LTS 10.15.1 (includes npm 6.4.1)** are the latest versions.
+At the time of this writing **Raspbian Buster Lite (Version: September 2019. 2019-09-26. Kernel: 4.19)** and **Node LTS: 10.16.3 (includes npm 6.9.0)** are the latest versions.
 
 ## Table of Contents
 
+* [Table of Contents](#table-of-contents)
 * [Devices](#devices)
-  * [Raspberry Pi 3 (Model B)](#raspberry-pi-3-model-b)  
+  * [Raspberry Pi 3 (Model B)](#raspberry-pi-3-model-b)
   * [Raspberry Pi Zero W](#raspberry-pi-zero-w)
   * [Raspberry Pi Zero](#raspberry-pi-zero)
 * [Device Setup](#device-setup)
@@ -17,7 +18,7 @@ At the time of this writing **Raspbian Stretch (Version: November 2018. 2018-11-
   * [How to Install Node.js](#how-to-install-nodejs)
   * [How to Uninstall Node.js](#how-to-uninstall-nodejs)
 * [Install Git](#install-git)
-* [References](#references)    
+* [References](#references)
 
 ## Devices
 
@@ -80,7 +81,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     
     The first part of the setup process consists of downloading a disk image of the entire operating system and copying it to the microSD card. There are two versions of the OS: Raspbian w/ Desktop and Raspbian Lite. The lite version will not have a familiar desktop interface. It will be the base OS with a command line interface.
     
-    **[Download Rasbian (Stretch Lite)](https://www.raspberrypi.org/downloads/raspbian/)**        
+    **[Download Rasbian](https://www.raspberrypi.org/downloads/raspbian/)**        
         
     What's a microSD card?
 
@@ -88,7 +89,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
 
     **Option 1: Etcher (Beginner)**
   
-    * Download and install [Etcher](https://etcher.io). It makes writing disk images to a SD card very easy.
+    * Download and install [balenaEtcher](https://balena.io). It makes writing disk images to a SD card very easy.
     * Unzip the Raspbian disk image to extract the .img file. Etcher works with either file.
     * Insert your microSD card into your SD card slot. If your computer doesn't have a SD card slot you will need to get a dongle to flash the card.
     * Open Etcher and point to the zip or img file, your microSD card
@@ -104,7 +105,7 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
       ```bash   
       diskutil list
       diskutil unmountDisk /dev/disk1
-      sudo dd bs=1m if=Downloads/2018-03-13-raspbian-stretch-lite.img of=/dev/rdisk1
+      sudo dd bs=1m if=Downloads/2019-09-26-raspbian-buster-lite of=/dev/rdisk1
       ```
     * Enter system password when prompted
     * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
@@ -227,17 +228,17 @@ Commands Used
 **Raspberry Pi 3**
 
 ```bash
-wget https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-armv7l.tar.xz
-tar -xvf node-v10.15.1-linux-armv7l.tar.xz
-cd node-v10.15.1-linux-armv7l
+wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-armv7l.tar.xz
+tar -xvf node-v10.16.3-linux-armv7l.tar.xz
+cd node-v10.16.3-linux-armv7l
 ```
 
 **Raspberry Pi Zero / Zero W**
 
 ```bash
-wget https://nodejs.org/dist/v10.15.1/node-v10.15.1-linux-armv6l.tar.xz
-tar -xvf node-v10.15.1-linux-armv6l.tar.xz
-cd node-v10.15.1-linux-armv6l
+wget https://nodejs.org/dist/v10.16.3/node-v10.16.3-linux-armv6l.tar.xz
+tar -xvf node-v10.16.3-linux-armv6l.tar.xz
+cd node-v10.16.3-linux-armv6l
 ```
 
 Install Node:
