@@ -259,6 +259,8 @@ At this point you have node and npm installed. Possible next steps, install git,
 
 If you would like to have the ability to install different versions of Node.js you can use Node Version Manager (NVM) to accomplish this. 
 
+**Note you do this instead of installing a single version of Node as shown above.**
+
 The latest information can be found at https://github.com/nvm-sh/nvm. The basic install script takes care of it all. After installing you close out the ssh connection and reconnect to install any version of Node.js you want. 
 
 ```bash
