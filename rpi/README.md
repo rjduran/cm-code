@@ -107,9 +107,13 @@ The Raspberry Pi Zero is half the size of a Model A+, with twice the utility. A 
     * Be sure to use the correct file path for your image download. If you downloaded a zip file you will need to extract it to get the img file.  
       ```bash
       # For Example, my disk is called /dev/disk1 and my disk image is located in my Downloads folder.  
-      diskutil list # list out all connected disks
-      diskutil unmountDisk /dev/disk1 # unmount the disk representing the SD card
-      sudo dd bs=1m if=Downloads/2019-09-26-raspbian-buster-lite.img of=/dev/rdisk1 # flash the SD card with raspbian image
+      # list out all connected disks
+      # unmount the disk representing the SD card
+      # flash the SD card with raspbian image
+      
+      diskutil list 
+      diskutil unmountDisk /dev/disk1 
+      sudo dd bs=1m if=Downloads/2019-09-26-raspbian-buster-lite.img of=/dev/rdisk1 
       ```
     * Enter system password when prompted
     * Wait for some amount of time (~ 5-7 mins). The cursor will flash and return back to a mode where you can enter commands when complete.
